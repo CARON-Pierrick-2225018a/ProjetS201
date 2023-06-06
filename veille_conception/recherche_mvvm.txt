@@ -1,1 +1,4 @@
-.
+https://www.youtube.com/watch?v=-xTqfilaYow
+https://youtu.be/SoP8wpBBK20
+https://devm.io/java/mvvmfx-model-view-viewmodel-javafx-114907
+https://foad.ensicaen.fr/pluginfile.php/1214/course/section/635/gui-patterns.pdf?time=1570958143538
