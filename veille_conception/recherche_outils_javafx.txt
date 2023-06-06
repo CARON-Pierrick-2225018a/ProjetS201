@@ -1,2 +1,12 @@
 https://blog.ronanlefichant.fr/2021/07/afficher-carte-javafx.html
 https://genuinecoder.com/javafx-material-design-hamburger-transitions-html/
+
+"liste de course" :
+
+une classe seisme
+une carte
+un tableau de classes seisme
+Fonction qui check si un point est dans un rayon d'un autre --> checkRadius(point1, rayon, point2)
+Fonction check si séisme a un attribut --> checkAttribut(seisme, attribut)
+
+searchBar ?
