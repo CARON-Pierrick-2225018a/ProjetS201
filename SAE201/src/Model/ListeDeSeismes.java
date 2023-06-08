@@ -212,6 +212,10 @@ public class ListeDeSeismes {
         return seismes;
     }
 
+
+
+    // TODO : tableau de correspondance a la main selon les valeurs uniques
+    
     // On tri par ordre alphabétique les qualités d'intensité
     public ArrayList<Seisme> triQualiteIntensite(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
@@ -293,15 +297,11 @@ public class ListeDeSeismes {
     };
     //pour calculer la distance entre deux points
     private double calculerDistance(Seisme seisme1, Seisme seisme2) {
-        // Calcul de la distance entre deux séismes (à adapter selon vos critères)
         double lat1 = seisme1.getLatitude();
         double lon1 = seisme1.getLongitude();
         double lat2 = seisme2.getLatitude();
         double lon2 = seisme2.getLongitude();
-
-        // Exemple de calcul de distance utilisant la formule de Haversine
-        // À adapter selon vos besoins
-        double earthRadius = 6371; // Rayon de la Terre en kilomètres
+        final double earthRadius = 6371; // Rayon de la Terre en kilomètres
         double dLat = Math.toRadians(lat2 - lat1);
         double dLon = Math.toRadians(lon2 - lon1);
         double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
