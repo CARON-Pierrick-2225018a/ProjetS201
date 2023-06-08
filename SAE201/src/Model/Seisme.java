@@ -3,7 +3,7 @@ package SAE201.src.Model;
 import java.util.Date;
 import java.sql.Time;
 
-/// La classe séisme représentera chaque séisme du csv importé
+// La classe séisme représentera chaque séisme du csv importé
 public class Seisme {
     private double intensite;
     private double longitude;
@@ -12,11 +12,11 @@ public class Seisme {
     private String qualiteIntensite;
     private int identifiant;
     private Time heure;
-    private String zone;    /// Attribut "nom" dans le csv
+    private String zone;    // Attribut "nom" dans le csv
     private String region;
     private String choc;
 
-    /// Constructeur de la classe
+    // Constructeur de la classe
     public Seisme(double intensite, double longitude, double latitude, Date date, String qualiteIntensite, int identifiant, Time heure, String zone, String region, String choc) {
         this.intensite = intensite;
         this.longitude = longitude;
@@ -28,6 +28,14 @@ public class Seisme {
         this.zone = zone;
         this.region = region;
         this.choc = choc;
+    }
+
+    // A part le toString, rien d'intéressant c'est que des getters et des setters
+
+    // A modifier plus tard
+    @Override
+    public String toString() {
+        return "" + zone;
     }
 
     public double getIntensite() {
@@ -108,20 +116,5 @@ public class Seisme {
 
     public void setChoc(String choc) {
         this.choc = choc;
-    }
-
-    /// Renvoi un booléen selon si le séisme est avant la date rentrée
-    public boolean estAvant(Date date) {
-        return this.date.before(date);
-    }
-
-    /// Renvoi un booléen selon si le séisme est après la date rentrée
-    public boolean estApres(Date date) {
-        return this.date.after(date);
-    }
-
-    @Override
-    public String toString() {
-        return "" + zone;
     }
 }

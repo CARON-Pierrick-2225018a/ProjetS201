@@ -1,26 +1,60 @@
 package SAE201.src.Model;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-
-import SAE201.src.Model.Seisme;
+import java.util.Scanner;
 
 public class ListeDeSeismes {
     private ArrayList<Seisme> seismes;
 
+    // Constructeur de la liste
     public ListeDeSeismes() {
         seismes = new ArrayList<>();
     }
 
+    // Ajouter un élément à la liste
     public void addSeisme(Seisme seisme) {
         seismes.add(seisme);
     }
 
+    // Getter de la liste
     public ArrayList<Seisme> getSeismes() {
         return seismes;
     }
+
+    // On remplace la liste
+    public void setSeismes(ArrayList<Seisme> seismes) {
+        this.seismes = seismes;
+    }
+
+    // Ici on load le CSV et on l'update
+    // Pas entièrement fonctionnel
+    public void loadCSV(String nomFichier) {
+        boolean started = false;
+        File fichier = new File(nomFichier);
+        try {
+            Scanner sc = new Scanner(fichier);
+            sc.useDelimiter(";");
+            while (sc.hasNext())
+            {
+                if (started) {
+                    String a = sc.next();
+                    System.out.print(a);
+                }
+                else {
+                    started=true;
+                }
+            }
+            sc.close();
+        }
+        catch(FileNotFoundException exception) {
+            System.out.println("Erreur lors de l'importation du fichier");
+            System.out.println(exception);
+        }
+}
 
     // L'argument des tris suivants définit si la liste est inversée ou non (croissant/décroissant)
 
@@ -146,13 +180,7 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    public void setSeismes(ArrayList<Seisme> seismes) {
-        this.seismes = seismes;
-    }
-
-
     // Méthodes pour obtenir les attributs maximum
-
     public double getIntensiteMax() {
         double max = 0;
         for (Seisme i : seismes) {
@@ -202,8 +230,7 @@ public class ListeDeSeismes {
     }
 
 
-    // Méthodes pour obtenir les attributs minmum
-
+    // Méthodes pour obtenir les attributs minimum
     public double getIntensiteMin() {
         double min = -1;
         for (Seisme i : seismes) {
@@ -294,4 +321,104 @@ public class ListeDeSeismes {
         return new Date(total / dates.getSeismes().size());
     }
 
+    // Méthodes de rehcreche d'attributs
+    public ArrayList<Seisme> rechercheIntensite(int intensite) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getIntensite() == intensite) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheLongitude(int longitude) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getLongitude() == longitude) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheLatitude(int latitude) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getLatitude() == latitude) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheDate(Date date) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getDate().getTime() == date.getTime()) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheQualiteIntensite(String QI) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getQualiteIntensite() == QI) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheIdentifiant(int id) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getIdentifiant() == id) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheHeure(Date heure) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getHeure().getTime() == heure.getTime()) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheZone(String zone) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getZone() == zone) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheRegion(String region) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getRegion() == region) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
+
+    public ArrayList<Seisme> rechercheChoc(String choc) {
+        ArrayList<Seisme> tab_final = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getChoc() == choc) {
+                tab_final.add(seisme);
+            }
+        }
+        return tab_final;
+    }
 }
