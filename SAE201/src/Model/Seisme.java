@@ -1,42 +1,73 @@
 package SAE201.src.Model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.sql.Time;
 
 // La classe séisme représentera chaque séisme du csv importé
 public class Seisme {
-    private double intensite;
-    private double longitude;
-    private double latitude;
-    private Date date;
-    private String qualiteIntensite;
     private int identifiant;
+    private Date date;
     private Time heure;
     private String zone;    // Attribut "nom" dans le csv
     private String region;
     private String choc;
+    private double xRGF93L93;
+    private double yRGF93L93;
+    private double latitude;
+    private double longitude;
+    private double intensite;
+    private String qualiteIntensite;
 
     // Constructeur de la classe
-    public Seisme(double intensite, double longitude, double latitude, Date date, String qualiteIntensite, int identifiant, Time heure, String zone, String region, String choc) {
-        this.intensite = intensite;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.date = date;
-        this.qualiteIntensite = qualiteIntensite;
+
+    public Seisme(int identifiant, Date date, Time heure, String zone, String region,
+                  String choc, double xRGF93L93, double yRGF93L93, double latitude,
+                  double longitude, double intensite, String qualiteIntensite) {
         this.identifiant = identifiant;
+        this.date = date;
         this.heure = heure;
         this.zone = zone;
         this.region = region;
         this.choc = choc;
+        this.xRGF93L93 = xRGF93L93;
+        this.yRGF93L93 = yRGF93L93;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.intensite = intensite;
+        this.qualiteIntensite = qualiteIntensite;
     }
+
 
     // A part le toString, rien d'intéressant c'est que des getters et des setters
 
-    // A modifier plus tard
     @Override
     public String toString() {
-        return "" + zone;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        String strDate = formatter.format(date);
+        String strChoc = choc ;
+        if (strChoc == null)
+            strChoc = "N/A";
+        String qualite = qualiteIntensite ;
+        if (qualite == null)
+            qualite = "N/A";
+        return "Seisme[" +
+                "id:" + identifiant +
+                ", date: " + strDate +
+                ", durée: " + heure +
+                ", zone: '" + zone + '\'' +
+                ", region: '" + region + '\'' +
+                ", choc: '" + strChoc + '\'' +
+                //", xRGF93: " + xRGF93L93 +
+                //", yRGF93: " + yRGF93L93 +
+                ", latitude: " + latitude +
+                ", longitude: " + longitude +
+                ", intensite: " + intensite +
+                ", qualiteIntensite: '" + qualite + '\'' +
+                ']'+"\n";
     }
+
+    // A modifier plus tard
 
     public double getIntensite() {
         return intensite;
@@ -116,5 +147,21 @@ public class Seisme {
 
     public void setChoc(String choc) {
         this.choc = choc;
+    }
+
+    public double getxRGF93L93() {
+        return xRGF93L93;
+    }
+
+    public void setxRGF93L93(double xRGF93L93) {
+        this.xRGF93L93 = xRGF93L93;
+    }
+
+    public double getyRGF93L93() {
+        return yRGF93L93;
+    }
+
+    public void setyRGF93L93(double yRGF93L93) {
+        this.yRGF93L93 = yRGF93L93;
     }
 }

@@ -1,23 +1,42 @@
 package SAE201.src.Model;
 
-import java.io.*;
+import java.sql.Time;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class ListeDeSeismes {
     private ArrayList<Seisme> seismes;
 
-    // Constructeur de la liste
-    public ListeDeSeismes() {
+    // Constructeur de la liste depuis un csv
+    public ListeDeSeismes(String pathToCSV) {
         seismes = new ArrayList<>();
+        seismes = loadCSV(pathToCSV,";");
     }
 
     // Ajouter un élément à la liste
     public void addSeisme(Seisme seisme) {
         seismes.add(seisme);
+    }
+
+    // on détruit de la liste un seisme par rapport a son identifiant
+    public void removeSeisme(int identifiant){
+        for (Seisme s : seismes){
+            if (s.getIdentifiant()==identifiant)
+                seismes.remove(s);
+            break;
+        }
+    }
+    // on détruit de la liste un seisme
+    public void removeSeisme(Seisme s){
+        seismes.remove(s);
     }
 
     // Getter de la liste
@@ -32,29 +51,92 @@ public class ListeDeSeismes {
 
     // Ici on load le CSV et on l'update
     // Pas entièrement fonctionnel
-    public void loadCSV(String nomFichier) {
-        boolean started = false;
-        File fichier = new File(nomFichier);
-        try {
-            Scanner sc = new Scanner(fichier);
-            sc.useDelimiter(";");
-            while (sc.hasNext())
-            {
-                if (started) {
-                    String a = sc.next();
-                    System.out.print(a);
+    public ArrayList<Seisme> loadCSV(String csvFile,String splitterChar) {
+        ArrayList<Seisme> seismeList = new ArrayList<>();
+        String line;
+        String csvSplitBy = splitterChar;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            // Skip the header line if it exists
+            br.readLine();
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(csvSplitBy);
+
+                int identifiant = Integer.valueOf(data[0]);
+                String date = data[1];
+                String heure = data[2];
+                String nom = data[3];
+                String regionEpicentrale = data[4];
+                String choc = null;
+                if (data.length>=6)
+                    choc = data[5].isEmpty() ? null : data[5];
+
+                double xRGF93L93 = 0;
+                double yRGF93L93 = 0;
+                double latitudeWGS84 = 0;
+                double longitudeWGS84 = 0;
+                double intensiteEpicentrale = 0;
+                String qualiteIntensiteEpicentrale = null;
+                Time heureSeisme = null;
+                if (data.length <= 6 ){
+                    xRGF93L93 = seismeList.get(seismes.size()).getxRGF93L93();
+                    yRGF93L93 = seismeList.get(seismes.size()).getyRGF93L93();
+                    latitudeWGS84 = seismeList.get(seismes.size()).getLatitude();
+                    longitudeWGS84 = seismeList.get(seismes.size()).getLongitude();
+                    intensiteEpicentrale = seismeList.get(seismes.size()).getIntensite();
+                    qualiteIntensiteEpicentrale = seismeList.get(seismes.size()).getQualiteIntensite();
                 }
+
                 else {
-                    started=true;
+                    xRGF93L93 = data[6].isEmpty() ? 0.0 : Double.parseDouble(data[6]);
+                    yRGF93L93 = data[7].isEmpty() ? 0.0 :Double.parseDouble(data[7]);
+                    latitudeWGS84 = data[8].isEmpty() ? 0.0 :Double.parseDouble(data[8]);
+                    longitudeWGS84 = data[9].isEmpty() ? 0.0 :Double.parseDouble(data[9]);
+                    intensiteEpicentrale = data.length >= 10 ? 0.0 : Double.parseDouble(data[10]);
+                    qualiteIntensiteEpicentrale = data.length >= 10 ? null : data[11];
                 }
+                if (!heure.isEmpty()) {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("HH 'h' mm 'min'");
+                    dateFormat.setLenient(false);
+                    try {
+                        Date parsedDate = dateFormat.parse(heure);
+                        heureSeisme = new Time(parsedDate.getTime());
+                    } catch (ParseException e) {
+                        dateFormat = new SimpleDateFormat("HH 'h'");
+                        Date parsedDate = dateFormat.parse(heure);
+                        heureSeisme = new Time(parsedDate.getTime());
+                    }
+                }
+                Date dateSeisme = null;
+
+                if (!date.isEmpty()) {
+                    ArrayList<SimpleDateFormat> knownPattern = new ArrayList<>();
+                    knownPattern.add(new SimpleDateFormat("yyyy'/'MM'/'dd'/'"));
+                    knownPattern.add(new SimpleDateFormat("yyyy'/'MM'/'"));
+                    knownPattern.add(new SimpleDateFormat("yyyy'/'"));
+
+
+                    for (SimpleDateFormat format : knownPattern) {
+                        try {
+                            dateSeisme = format.parse(date);
+                        } catch (ParseException e) {
+                            //intentionally empty
+                        }
+                    }
+
+                }
+                Seisme seisme = new Seisme(identifiant, dateSeisme, heureSeisme, nom, regionEpicentrale, choc,
+                        xRGF93L93, yRGF93L93, latitudeWGS84, longitudeWGS84,
+                        intensiteEpicentrale, qualiteIntensiteEpicentrale);
+                seismeList.add(seisme);
             }
-            sc.close();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
         }
-        catch(FileNotFoundException exception) {
-            System.out.println("Erreur lors de l'importation du fichier");
-            System.out.println(exception);
-        }
-}
+        return seismeList;
+
+    }
 
     // L'argument des tris suivants définit si la liste est inversée ou non (croissant/décroissant)
 
@@ -180,6 +262,56 @@ public class ListeDeSeismes {
         return seismes;
     }
 
+    // on tri par proximité d'un seisme
+    public ArrayList<Seisme> triProximite(Seisme s,boolean reverse){
+        // Création d'une copie de la liste originale pour effectuer le tri
+        ArrayList<Seisme> sortedList = new ArrayList<>(seismes);
+
+        Comparator<Seisme> proximityComparator = new Comparator<Seisme>() {
+            @Override
+            public int compare(Seisme seisme1, Seisme seisme2) {
+                // Calcul de la distance entre les séismes et le séisme de référence
+                double distance1 = calculerDistance(seisme1, s);
+                double distance2 = calculerDistance(seisme2, s);
+
+                // Comparaison en fonction de la distance
+                if (distance1 < distance2) { return -1;
+                } else if (distance1 > distance2) { return 1;
+                } else { return 0; }
+            }
+        };
+
+        // Tri de la liste en utilisant le Comparator de proximité
+        Collections.sort(sortedList, proximityComparator);
+
+        // Inversion de l'ordre si reverse est true
+        if (reverse) {
+            Collections.reverse(sortedList);
+        }
+
+        return sortedList;
+    };
+    //pour calculer la distance entre deux points
+    private double calculerDistance(Seisme seisme1, Seisme seisme2) {
+        // Calcul de la distance entre deux séismes (à adapter selon vos critères)
+        double lat1 = seisme1.getLatitude();
+        double lon1 = seisme1.getLongitude();
+        double lat2 = seisme2.getLatitude();
+        double lon2 = seisme2.getLongitude();
+
+        // Exemple de calcul de distance utilisant la formule de Haversine
+        // À adapter selon vos besoins
+        double earthRadius = 6371; // Rayon de la Terre en kilomètres
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double distance = earthRadius * c;
+
+        return distance;
+    }
     // Méthodes pour obtenir les attributs maximum
     public double getIntensiteMax() {
         double max = 0;
@@ -322,6 +454,9 @@ public class ListeDeSeismes {
     }
 
     // Méthodes de rehcreche d'attributs
+
+
+
     public ArrayList<Seisme> rechercheIntensite(int intensite) {
         ArrayList<Seisme> tab_final = new ArrayList<>();
         for (Seisme seisme : seismes) {
