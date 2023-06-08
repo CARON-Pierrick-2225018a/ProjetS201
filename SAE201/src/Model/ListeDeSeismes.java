@@ -10,7 +10,6 @@ import SAE201.src.Model.Seisme;
 public class ListeDeSeismes {
     private ArrayList<Seisme> seismes;
 
-
     public ListeDeSeismes() {
         seismes = new ArrayList<>();
     }
@@ -151,6 +150,7 @@ public class ListeDeSeismes {
         this.seismes = seismes;
     }
 
+
     // Méthodes pour obtenir les attributs maximum
 
     public double getIntensiteMax() {
@@ -201,6 +201,7 @@ public class ListeDeSeismes {
         return max;
     }
 
+
     // Méthodes pour obtenir les attributs minmum
 
     public double getIntensiteMin() {
@@ -249,6 +250,48 @@ public class ListeDeSeismes {
             if (i.getHeure().before(min)) min = i.getHeure();
         }
         return min;
+    }
+
+
+    // Méthodes pour obtenir des moyennes d'attributs
+    public double getIntensiteAvg(ListeDeSeismes liste) {
+        long total = 0;
+
+        for (Seisme i : liste.getSeismes()) {
+            total += i.getIntensite();
+        }
+
+        return total / liste.getSeismes().size();
+    }
+
+    public double getLongitudeAvg(ListeDeSeismes liste) {
+        long total = 0;
+
+        for (Seisme i : liste.getSeismes()) {
+            total += i.getLongitude();
+        }
+
+        return total / liste.getSeismes().size();
+    }
+
+    public double getLatitudeAvg(ListeDeSeismes liste) {
+        long total = 0;
+
+        for (Seisme i : liste.getSeismes()) {
+            total += i.getLatitude();
+        }
+
+        return total / liste.getSeismes().size();
+    }
+
+    public Date getHeureAvg(ListeDeSeismes dates) {
+        long total = 0;
+
+        for (Seisme date : dates.getSeismes()) {
+            total += date.getHeure().getTime();
+        }
+
+        return new Date(total / dates.getSeismes().size());
     }
 
 }
