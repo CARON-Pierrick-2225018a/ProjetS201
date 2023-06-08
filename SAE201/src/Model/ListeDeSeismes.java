@@ -215,7 +215,7 @@ public class ListeDeSeismes {
 
 
     // TODO : tableau de correspondance a la main selon les valeurs uniques
-    
+
     // On tri par ordre alphabétique les qualités d'intensité
     public ArrayList<Seisme> triQualiteIntensite(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
