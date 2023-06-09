@@ -156,7 +156,7 @@
                                   <children>
                                       <VBox prefHeight="624.0" prefWidth="878.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                                           <children>
-                                              <Label minWidth="60.0" prefHeight="60.0" prefWidth="755.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-label-padding: 2; -fx-padding: 2;" text="Cartographie sismique à &lt;ZONE&gt; de &lt;DATEMIN&gt; à &lt;DATEMAX&gt;" wrapText="true">
+                                              <Label prefHeight="60.0" prefWidth="755.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-label-padding: 2; -fx-padding: 2;" text="Cartographie sismique à &lt;ZONE&gt; de &lt;DATEMIN&gt; à &lt;DATEMAX&gt;" wrapText="true">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -171,7 +171,7 @@
                                       </VBox>
                   <VBox prefHeight="634.0" prefWidth="880.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                      <children>
-                        <Label minWidth="60.0" prefHeight="60.0" prefWidth="877.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-label-padding: 2; -fx-padding: 2;" text="HeatMap sismique à &lt;ZONE&gt; de &lt;DATEMIN&gt; à &lt;DATEMAX&gt;" wrapText="true">
+                        <Label prefHeight="60.0" prefWidth="877.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-label-padding: 2; -fx-padding: 2;" text="HeatMap sismique à &lt;ZONE&gt; de &lt;DATEMIN&gt; à &lt;DATEMAX&gt;" wrapText="true">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
