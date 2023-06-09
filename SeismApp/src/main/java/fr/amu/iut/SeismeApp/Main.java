@@ -22,7 +22,7 @@ public class Main {
         // Affichage de la liste
         //System.out.println(list.getSeismes());
 
-        ListeDeSeismes list = new ListeDeSeismes("/amuhome/g22017449/Bureau/SeismApp/src/main/resources/AppControl/SisFrance_seismes_20230609121408.csv");
+        ListeDeSeismes list = new ListeDeSeismes("/home/flouksac/SAE/ProjetS201/SeismApp/src/main/resources/SisFranceBDD2.csv");
         list.setSeismes( list.triProximite(list.getSeismes().get(1),true ));
 
         System.out.println(list.getSeismes());
