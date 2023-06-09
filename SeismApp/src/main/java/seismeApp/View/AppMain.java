@@ -1,4 +1,4 @@
-package fr.amu.iut.SeismeApp.View;
+package seismeApp.View;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

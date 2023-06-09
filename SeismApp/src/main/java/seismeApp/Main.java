@@ -1,11 +1,8 @@
-package fr.amu.iut.SeismeApp;
+package seismeApp;
 
-import fr.amu.iut.SeismeApp.Model.ListeDeSeismes;
-import fr.amu.iut.SeismeApp.Model.Seisme;
-import javafx.fxml.FXMLLoader;
+import seismeApp.Model.ListeDeSeismes;
 
-import java.sql.Time;
-import java.util.Date;
+import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,8 +18,7 @@ public class Main {
 
         // Affichage de la liste
         //System.out.println(list.getSeismes());
-
-        ListeDeSeismes list = new ListeDeSeismes("/home/flouksac/SAE/ProjetS201/SeismApp/src/main/resources/SisFranceBDD2.csv");
+        ListeDeSeismes list = new ListeDeSeismes( Main.class.getClassLoader().getResource("SisFranceBDD2.csv").getPath());
         list.setSeismes( list.triProximite(list.getSeismes().get(1),true ));
 
         System.out.println(list.getSeismes());

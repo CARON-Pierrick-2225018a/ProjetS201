@@ -1,4 +1,4 @@
-package fr.amu.iut.SeismeApp.Model;
+package seismeApp.Model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

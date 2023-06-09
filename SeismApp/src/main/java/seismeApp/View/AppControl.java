@@ -1,4 +1,4 @@
-package fr.amu.iut.SeismeApp.View;
+package seismeApp.View;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
