@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class ListeDeSeismes {
     // Constructeur de la liste depuis un csv
     public ListeDeSeismes(String pathToCSV) {
         seismes = new ArrayList<>();
-        seismes = loadCSV(pathToCSV,";");
+        seismes = loadCSV(pathToCSV,"¤");
     }
 
     // Ajouter un élément à la liste
@@ -50,7 +49,6 @@ public class ListeDeSeismes {
     }
 
     // Ici on load le CSV et on l'update
-    // Pas entièrement fonctionnel
     public ArrayList<Seisme> loadCSV(String csvFile,String splitterChar) {
         ArrayList<Seisme> seismeList = new ArrayList<>();
         String line;
@@ -62,7 +60,6 @@ public class ListeDeSeismes {
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(csvSplitBy);
-
                 int identifiant = Integer.valueOf(data[0]);
                 String date = data[1];
                 String heure = data[2];
@@ -93,8 +90,8 @@ public class ListeDeSeismes {
                     yRGF93L93 = data[7].isEmpty() ? 0.0 :Double.parseDouble(data[7]);
                     latitudeWGS84 = data[8].isEmpty() ? 0.0 :Double.parseDouble(data[8]);
                     longitudeWGS84 = data[9].isEmpty() ? 0.0 :Double.parseDouble(data[9]);
-                    intensiteEpicentrale = data.length >= 10 ? 0.0 : Double.parseDouble(data[10]);
-                    qualiteIntensiteEpicentrale = data.length >= 10 ? null : data[11];
+                    intensiteEpicentrale = ((data.length <= 10) || data[10].isEmpty()) ? 0.0 : Double.parseDouble(data[10]);
+                    qualiteIntensiteEpicentrale = (data.length <= 11 || data[11].isEmpty()) ? null : data[11];
                 }
                 if (!heure.isEmpty()) {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("HH 'h' mm 'min'");
@@ -121,7 +118,6 @@ public class ListeDeSeismes {
                         try {
                             dateSeisme = format.parse(date);
                         } catch (ParseException e) {
-                            //intentionally empty
                         }
                     }
 
@@ -218,11 +214,33 @@ public class ListeDeSeismes {
 
     // On tri par ordre alphabétique les qualités d'intensité
     public ArrayList<Seisme> triQualiteIntensite(boolean reverse) {
-        Collections.sort(seismes, new Comparator<Seisme>() {
-            public int compare(Seisme c1, Seisme c2) {
-                return c1.getQualiteIntensite().compareTo(c2.getQualiteIntensite());
-            }});
-        // On inverse ou non la liste
+        ArrayList<Seisme> arbitraire = new ArrayList<Seisme>();
+        ArrayList<Seisme> assezSure = new ArrayList<Seisme>();
+        ArrayList<Seisme> assezSureSponHeueur = new ArrayList<Seisme>();
+        ArrayList<Seisme> incertaine = new ArrayList<Seisme>();
+        ArrayList<Seisme> informationIsolee = new ArrayList<Seisme>();
+        ArrayList<Seisme> sure = new ArrayList<Seisme>();
+        ArrayList<Seisme> nullList = new ArrayList<Seisme>();
+
+        triDate(false);
+
+        for (Seisme s : seismes){
+            if (s.getQualiteIntensite()==null) {nullList.add(s);}
+            else if (s.getQualiteIntensite().equals("ARBITRAIRE")) {arbitraire.add(s);}
+            else if (s.getQualiteIntensite().equals("ASSEZ SURE")) {assezSure.add(s);}
+            else if (s.getQualiteIntensite().equals("ASSEZ SURE (SPONHEUEUR)")) {assezSureSponHeueur.add(s);}
+            else if (s.getQualiteIntensite().equals("INCERTAINE")) {incertaine.add(s);}
+            else if (s.getQualiteIntensite().equals("INFORMATION ISOLÉE")) {informationIsolee.add(s);}
+            else if (s.getQualiteIntensite().equals("SURE")) {sure.add(s);}
+        }
+        sure.addAll(assezSure);
+        sure.addAll(assezSureSponHeueur);
+        sure.addAll(informationIsolee);
+        sure.addAll(arbitraire);
+        sure.addAll(incertaine);
+        sure.addAll(nullList);
+        setSeismes(sure); // modification de l'attribut seismes
+
         if (reverse) Collections.reverse(seismes);
         return seismes;
     }
@@ -353,8 +371,8 @@ public class ListeDeSeismes {
         return max;
     }
 
-    public Date getHeureMax() {
-        Date max = new Date(0);
+    public Time getHeureMax() {
+        Time max = new Time(0);
         for (Seisme i : seismes) {
             if (i.getHeure().after(max)) max = i.getHeure();
         }
@@ -403,8 +421,8 @@ public class ListeDeSeismes {
         return min;
     }
 
-    public Date getHeureMin() {
-        Date min = getHeureMax();
+    public Time getHeureMin() {
+        Time min = getHeureMax();
         for (Seisme i : seismes) {
             if (i.getHeure().before(min)) min = i.getHeure();
         }
@@ -443,14 +461,14 @@ public class ListeDeSeismes {
         return total / liste.getSeismes().size();
     }
 
-    public Date getHeureAvg(ListeDeSeismes dates) {
+    public Time getHeureAvg(ListeDeSeismes dates) {
         long total = 0;
 
         for (Seisme date : dates.getSeismes()) {
             total += date.getHeure().getTime();
         }
 
-        return new Date(total / dates.getSeismes().size());
+        return new Time(total / dates.getSeismes().size());
     }
 
     // Méthodes de rehcreche d'attributs
@@ -517,7 +535,7 @@ public class ListeDeSeismes {
         return tab_final;
     }
 
-    public ArrayList<Seisme> rechercheHeure(Date heure) {
+    public ArrayList<Seisme> rechercheHeure(Time heure) {
         ArrayList<Seisme> tab_final = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getHeure().getTime() == heure.getTime()) {

@@ -21,8 +21,9 @@ public class Main {
         // Affichage de la liste
         //System.out.println(list.getSeismes());
 
-        ListeDeSeismes list = new ListeDeSeismes("/home/flouksac/Téléchargements/SisFranceBDD.csv");
-        list.setSeismes( list.triProximite(list.getSeismes().get(1),true ));
+        ListeDeSeismes list = new ListeDeSeismes("/home/flouksac/Téléchargements/SisFranceBDD2.csv");
+        //list.setSeismes( list.triProximite(list.getSeismes().get(1),true ));
+        //list.setSeismes( list.triQualiteIntensite(true ));
 
         System.out.println(list.getSeismes());
     }
