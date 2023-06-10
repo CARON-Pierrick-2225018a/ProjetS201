@@ -7,24 +7,14 @@ import seismeApp.Model.Seisme;
 
 import java.util.ArrayList;
 
-public class CustomCircleMarkerLayerViewModel {
+public class HeatMapCircleMarkerLayerViewModel {
 
 
     private ArrayList<MapPoint> listMapPoint;
     private ArrayList<Color> listColor;
     private ArrayList<Double> listIntensite;
-    private ArrayList<Integer> listIndentifiant;
+
     private ListeDeSeismes seismes;
-
-    public ArrayList<Integer> getListIndentifiant() {
-        return listIndentifiant;
-    }
-
-    public void setListIndentifiant(ArrayList<Integer> listIndentifiant) {
-        this.listIndentifiant = listIndentifiant;
-    }
-
-
 
 
     public ArrayList<MapPoint> getListMapPoint() {
@@ -51,22 +41,19 @@ public class CustomCircleMarkerLayerViewModel {
         this.listIntensite = listIntensite;
     }
 
-    public CustomCircleMarkerLayerViewModel(){
+    public HeatMapCircleMarkerLayerViewModel(){
         seismes = new ListeDeSeismes();
-
         listMapPoint = new ArrayList<>();
         listColor = new ArrayList<>();
         listIntensite = new ArrayList<>();
-        listIndentifiant = new ArrayList<>();
 
         //TODO ici on va devoir enlever de la liste seismes les elements pas dans la combo box lieux
 
         seismes.setSeismes( seismes.triIntensite(true));
         //System.out.println(seismes.getSeismes()); debug pour voir si csv bien chargé
-
         for (Seisme s: seismes.getSeismes()){
             listMapPoint.add(new MapPoint(s.getLatitude(),s.getLongitude()));
-            if (s.getIntensite()<2)                             {listColor.add(Color.BLUE);} // cas inconnu
+            if (s.getIntensite()<2) listColor.add(Color.BLUE); // cas inconnu
             else if (s.getIntensite()>=2 && s.getIntensite()<3) {listColor.add(Color.LAVENDER);}
             else if (s.getIntensite()>=3 && s.getIntensite()<4) {listColor.add(Color.AQUA);}
             else if (s.getIntensite()>=4 && s.getIntensite()<5) {listColor.add(Color.LIME);}
@@ -76,8 +63,7 @@ public class CustomCircleMarkerLayerViewModel {
             else if (s.getIntensite()>=8 && s.getIntensite()<9) {listColor.add(Color.MAGENTA);}
             else if (s.getIntensite()>=9 ) listColor.add(Color.PURPLE);
 
-            listIntensite.add(s.getIntensite()+10);
-            listIndentifiant.add(s.getIdentifiant());
+            listIntensite.add(50-s.getIntensite()*5.5);
         }
     }
     public ListeDeSeismes getSeismes() {

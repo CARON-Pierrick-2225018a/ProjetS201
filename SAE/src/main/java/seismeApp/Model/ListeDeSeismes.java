@@ -67,6 +67,8 @@ public class ListeDeSeismes {
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(csvSplitBy);
+                if (data.length<=12){
+
                 int identifiant = Integer.valueOf(data[0]);
                 String date = data[1];
                 String heure = data[2];
@@ -133,7 +135,7 @@ public class ListeDeSeismes {
                         xRGF93L93, yRGF93L93, latitudeWGS84, longitudeWGS84,
                         intensiteEpicentrale, qualiteIntensiteEpicentrale);
                 seismeList.add(seisme);
-            }
+            }};
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }

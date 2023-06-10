@@ -6,8 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
+import seismeApp.ViewModel.CircleClickHandler;
 import seismeApp.ViewModel.CustomCircleMarkerLayerViewModel;
 
 import java.util.ArrayList;
@@ -16,12 +18,13 @@ public class CustomCircleMarkerLayerView extends MapLayer {
 
 
     private ObservableList<Circle> listCircle= FXCollections.observableArrayList();
-    ;
+
 
 
     private ArrayList<MapPoint> listMapPoint;
     private ArrayList<Double> listIntensite;
     private ArrayList<Color> listColor;
+    private ArrayList<Integer> listIdentifiant;
 
     private CustomCircleMarkerLayerViewModel viewModel;
 
@@ -31,9 +34,12 @@ public class CustomCircleMarkerLayerView extends MapLayer {
         listMapPoint = viewModel.getListMapPoint();
         listColor = viewModel.getListColor();
         listIntensite = viewModel.getListIntensite();
+        listIdentifiant = viewModel.getListIndentifiant();
         for (int i = 0 ; i<listMapPoint.size(); i++){
+            CircleClickHandler circleClickHandler = new CircleClickHandler(listIdentifiant.get(i));
 
             listCircle.add(new Circle(listIntensite.get(i)*0.3,listColor.get(i)));
+            listCircle.get(i).setOnMouseClicked(circleClickHandler);
         }
 
         this.getChildren().addAll(listCircle);

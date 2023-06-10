@@ -4,7 +4,6 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.web.*?>
 
 <HBox prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: silver;" stylesheets="@../../../../../../ProjetTest/SAE/src/main/resources/seismeApp/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seismeApp.View.AppControl">
                   <children>
@@ -12,8 +11,8 @@
                           <children>
                               <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                                   <children>
-                                      <Label prefHeight="18.0" prefWidth="33.0" text="DU" />
-                                      <DatePicker fx:id="dateP1" prefHeight="26.0" prefWidth="137.0" />
+                                      <Label prefHeight="18.0" prefWidth="190.0" text="DU" />
+                                      <DatePicker fx:id="dateP1" prefHeight="26.0" prefWidth="342.0" />
                                   </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -24,8 +23,8 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                                   <children>
-                                      <Label prefHeight="18.0" prefWidth="30.0" text="AU" />
-                                      <DatePicker fx:id="dateP2" prefHeight="26.0" prefWidth="142.0" />
+                                      <Label prefHeight="18.0" prefWidth="191.0" text="AU" />
+                                      <DatePicker fx:id="dateP2" prefHeight="26.0" prefWidth="341.0" />
                                   </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -46,6 +45,15 @@
                   <Label fx:id="messageFichier" minHeight="60.0" prefHeight="60.0" prefWidth="370.0" style="-fx-wrap-text: true; -fx-border-color: black; -fx-label-padding: 2; -fx-border-radius: 8;" text="Ouvert avec Succès ! / Erreur import + nom fichier" />
                </children>
             </VBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="187.0" text="Lieu :" />
+                  <ComboBox prefHeight="25.0" prefWidth="333.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
                               <VBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                                   <children>
                                       <Label fx:id="iMax" text="Intensé MAX :" />
@@ -150,9 +158,7 @@
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding></Label>
-                        <AnchorPane fx:id="zoneMap" prefHeight="550.0" prefWidth="726.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;">
-
-                        </AnchorPane>
+                        <AnchorPane fx:id="zoneMap" prefHeight="550.0" prefWidth="726.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
                                           </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -168,7 +174,7 @@
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding>
                         </Label>
-                        <Pane fx:id="heatmap" prefHeight="555.0" prefWidth="723.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                        <AnchorPane fx:id="HeatMap" prefHeight="550.0" prefWidth="728.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

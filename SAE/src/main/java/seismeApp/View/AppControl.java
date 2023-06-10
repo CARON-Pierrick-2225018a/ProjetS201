@@ -45,23 +45,25 @@ public class AppControl implements Initializable {
     public VBox cartoMap;
 
     @FXML
-    public MapView carte;
-    @FXML
     public Label textCarte;
 
 
     @FXML
     public AnchorPane zoneMap;
+    @FXML
+    public AnchorPane HeatMap;
 
     private MapSeismeView mapSeismeView;
-    public void AppControl (){
+    private HeatMapSeismeView heatMapSeismeView;
+    //private AnchorPane
 
-    }
+
     @FXML
     public void initialize(URL location,ResourceBundle resources){
         mapSeismeView = new MapSeismeView(zoneMap);
         mapSeismeView.getView();
-
+        heatMapSeismeView= new HeatMapSeismeView(HeatMap);
+        heatMapSeismeView.getView();
     }
 
 }
