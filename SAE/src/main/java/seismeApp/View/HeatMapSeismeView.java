@@ -1,6 +1,7 @@
 package seismeApp.View;
 
 import eu.hansolo.fx.heatmap.HeatMap;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
@@ -9,11 +10,15 @@ import com.gluonhq.maps.MapView;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.VBox;
 
 public class HeatMapSeismeView {
     private MapLayer circleView;
     private AnchorPane zone;
     private MapView mapView;
+    private Button btnPlus = new Button("+");
+    private Button btnMoins= new Button("-");
+    private VBox vbox = new VBox(btnPlus,btnMoins);
 
     public HeatMapSeismeView(AnchorPane zone){
         this.zone = zone;
@@ -35,6 +40,12 @@ public class HeatMapSeismeView {
         mapView.setMinSize(550,450);
         mapView.setMaxSize(750,570);
         mapView.flyTo(0, mapPoint, 0.1);
+        btnPlus.setOnAction(event -> {mapView.setZoom(mapView.getZoom()+1);
+            ((HeatMapCircleMarkerLayerView) circleView).layoutLayer();});
+        btnMoins.setOnAction(event -> {mapView.setZoom(mapView.getZoom()-1);
+            ((HeatMapCircleMarkerLayerView) circleView).layoutLayer();});
+        btnPlus.setPrefSize(30,30);
+        btnMoins.setPrefSize(30,30);
         mapView.addEventFilter(ScrollEvent.ANY, new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent event) {
@@ -47,6 +58,6 @@ public class HeatMapSeismeView {
 
     public void getView(){
         zone.getChildren().add(mapView);
-        //zone.getChildren().add(circleView);
+        zone.getChildren().add(vbox);
     }
 }

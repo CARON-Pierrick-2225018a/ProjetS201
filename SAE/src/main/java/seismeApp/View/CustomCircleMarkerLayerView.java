@@ -2,6 +2,7 @@ package seismeApp.View;
 
 import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
+import com.gluonhq.maps.MapView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -24,19 +25,18 @@ public class CustomCircleMarkerLayerView extends MapLayer {
     private ArrayList<MapPoint> listMapPoint;
     private ArrayList<Double> listIntensite;
     private ArrayList<Color> listColor;
-    private ArrayList<Integer> listIdentifiant;
 
     private CustomCircleMarkerLayerViewModel viewModel;
 
-    public CustomCircleMarkerLayerView() {
+    public CustomCircleMarkerLayerView(MapView mapView) {
         viewModel = new CustomCircleMarkerLayerViewModel();
         //MapPoint mapPoint,double intensite,Color color
         listMapPoint = viewModel.getListMapPoint();
         listColor = viewModel.getListColor();
         listIntensite = viewModel.getListIntensite();
-        listIdentifiant = viewModel.getListIndentifiant();
         for (int i = 0 ; i<listMapPoint.size(); i++){
-            CircleClickHandler circleClickHandler = new CircleClickHandler(listIdentifiant.get(i));
+            CircleClickHandler circleClickHandler = new CircleClickHandler(((viewModel.getSeismes()).getSeismes()).get(i),
+                                                                            mapView,listMapPoint.get(i));
 
             listCircle.add(new Circle(listIntensite.get(i)*0.3,listColor.get(i)));
             listCircle.get(i).setOnMouseClicked(circleClickHandler);
@@ -55,6 +55,7 @@ public class CustomCircleMarkerLayerView extends MapLayer {
             /* Déplace le cercle selon les coordonnées du point */
             listCircle.get(i).setTranslateX(point2d.getX());
             listCircle.get(i).setTranslateY(point2d.getY());
+
         }
 
     }

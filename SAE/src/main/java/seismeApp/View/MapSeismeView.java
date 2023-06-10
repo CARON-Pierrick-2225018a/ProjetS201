@@ -29,7 +29,7 @@ public class MapSeismeView {
         mapView = new MapView();
 
 
-        MapLayer circleView = new CustomCircleMarkerLayerView();
+        MapLayer circleView = new CustomCircleMarkerLayerView(mapView);
         mapView.addLayer(circleView);
 
         MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
@@ -51,7 +51,6 @@ public class MapSeismeView {
                 event.consume();
             }
         });
-
 
         //  MapPoint mapPoint = new MapPoint(46.227638, 2.213749); ajout point
         mapView.setCenter(mapPoint);
