@@ -1,6 +1,8 @@
 package seismeApp.Model;
 
 
+import seismeApp.Main;
+
 import java.sql.Time;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -19,6 +21,10 @@ public class ListeDeSeismes {
     public ListeDeSeismes(String pathToCSV) {
         seismes = new ArrayList<>();
         seismes = loadCSV(pathToCSV,"¤");
+    }
+    public ListeDeSeismes() {
+        seismes = new ArrayList<>();
+        seismes = loadCSV("src/main/resources/seismeApp/SisFranceBDD2.csv","¤");
     }
 
     // Ajouter un élément à la liste

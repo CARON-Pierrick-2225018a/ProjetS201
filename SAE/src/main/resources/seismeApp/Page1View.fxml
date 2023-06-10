@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
 
-<HBox prefHeight="1080.0" prefWidth="1920.0" fx:controller="seismeApp.View.AppControl" style="-fx-background-color: silver;" stylesheets="@../../../../../../ProjetTest/SAE/src/main/resources/seismeApp/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: silver;" stylesheets="@../../../../../../ProjetTest/SAE/src/main/resources/seismeApp/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seismeApp.View.AppControl">
                   <children>
                       <VBox prefHeight="1080.0" prefWidth="515.0" styleClass="ColonneVbox">
                           <children>
@@ -160,7 +150,9 @@
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding></Label>
-                        <Pane fx:id="carte" prefHeight="555.0" prefWidth="723.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                        <AnchorPane fx:id="zoneMap" prefHeight="550.0" prefWidth="726.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;">
+
+                        </AnchorPane>
                                           </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

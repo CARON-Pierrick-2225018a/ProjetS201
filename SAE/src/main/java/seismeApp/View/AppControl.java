@@ -1,12 +1,14 @@
 package seismeApp.View;
 
 
+import com.gluonhq.maps.MapView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -43,9 +45,13 @@ public class AppControl implements Initializable {
     public VBox cartoMap;
 
     @FXML
-    public Pane carte;
+    public MapView carte;
     @FXML
     public Label textCarte;
+
+
+    @FXML
+    public AnchorPane zoneMap;
 
     private MapSeismeView mapSeismeView;
     public void AppControl (){
@@ -53,8 +59,9 @@ public class AppControl implements Initializable {
     }
     @FXML
     public void initialize(URL location,ResourceBundle resources){
-        System.out.println( carte);
-        mapSeismeView = new MapSeismeView(cartoMap,textCarte,carte);
+        mapSeismeView = new MapSeismeView(zoneMap);
+        mapSeismeView.getView();
+
     }
 
 }
