@@ -18,7 +18,7 @@ public class GraphViewModel {
         //lineChart.setAnimated(false);
 
         // Création des séries avec les noms des intervalles
-        for (int i = 0; i <= 9; i++) { // si on veut les affiché il faut changer i
+        for (int i = 1; i <= 9; i++) { // si on veut les affiché il faut changer i
             XYChart.Series<String, Number> s = new XYChart.Series<>();
             if (i == 0) { // on affiche pas les non renseignés
                 s.setName("intensité : <2");
@@ -49,8 +49,9 @@ public class GraphViewModel {
                     sortedMap.entrySet().stream().skip(10).findFirst().get().getKey());
         }
         */
-        if (sortedMap.size() > 15) {
-            int entriesToSkip = sortedMap.size() - 15;
+        Integer size = 100;
+        if (sortedMap.size() > size) {
+            int entriesToSkip = sortedMap.size() - size;
             sortedMap = new TreeMap<>(sortedMap).subMap(sortedMap.entrySet().stream().skip(entriesToSkip).findFirst().get().getKey(),
                     ((TreeMap<Integer, Map<Integer, Integer>>) sortedMap).lastKey() + 1);
         }

@@ -6,183 +6,183 @@
 <?import javafx.scene.layout.*?>
 
 <HBox prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: silver;" stylesheets="@../../../../../../ProjetTest/SAE/src/main/resources/seismeApp/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seismeApp.View.AppView">
-                  <children>
-                      <VBox prefHeight="1080.0" prefWidth="515.0" styleClass="ColonneVbox">
-                          <children>
-                              <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                  <children>
-                                      <Label prefHeight="18.0" prefWidth="190.0" text="DU" />
-                                      <DatePicker fx:id="dateP1" prefHeight="26.0" prefWidth="342.0" />
-                                  </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                  <children>
-                                      <Label prefHeight="18.0" prefWidth="191.0" text="AU" />
-                                      <DatePicker fx:id="dateP2" prefHeight="26.0" prefWidth="341.0" />
-                                  </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-                              </HBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="285.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-               <children>
-                  <HBox alignment="CENTER_LEFT" minWidth="296.0" prefHeight="28.0" prefWidth="296.0" spacing="10.0">
-                     <children>
-                        <Button fx:id="btnOpenCSV" mnemonicParsing="false" text="Open CSV" />
-                        <Button fx:id="btnDashboard" mnemonicParsing="false" text="Dashboard" />
-                        <Button fx:id="btnTableview" mnemonicParsing="false" text="Tableview" />
-                     </children>
-                  </HBox>
-                  <Label fx:id="messageFichier" minHeight="60.0" prefHeight="60.0" prefWidth="370.0" style="-fx-wrap-text: true; -fx-border-color: black; -fx-label-padding: 2; -fx-border-radius: 8;" text="Ouvert avec Succès ! / Erreur import + nom fichier" />
-               </children>
-            </VBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-               <children>
-                  <Label prefHeight="18.0" prefWidth="187.0" text="Lieu :" />
-                  <ComboBox prefHeight="25.0" prefWidth="333.0" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-                              <VBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                  <children>
-                                      <Label fx:id="iMax" text="Intensé MAX :" />
-                                  </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-                              </VBox>
-                              <VBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                  <children>
-                                      <Label fx:id="iMin" text="Intensé MIN :" />
-                                  </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-                              </VBox>
-                              <VBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                  <children>
-                                      <Label fx:id="iMoy" text="Intensé MOY :" />
-                                  </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-                              </VBox>
-                              <VBox prefHeight="546.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                  <children>
-                                      <TextField fx:id="searchBar" text="Search" />
-                                      <Label prefHeight="16.0" prefWidth="244.0" text="Informations complémentaire :" />
-                  <ListView fx:id="listViewAttributs" prefHeight="504.0" prefWidth="263.0" style="-fx-background-radius: 8; -fx-border-radius: 8;" />
-                                  </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-                              </VBox>
-                          </children>
-                      </VBox>
-                      <VBox prefHeight="1080.0" prefWidth="1631.0">
-                          <children>
-                              <HBox prefHeight="451.0" prefWidth="1558.0">
-                                  <children>
-                                      <VBox fx:id="chart1" prefHeight="300.0" prefWidth="406.5" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                          <children>
-                                              <ComboBox fx:id="filtre1" prefWidth="150.0" promptText="Filtres" />
-                                              <BarChart fx:id="barChart" prefHeight="505.0" prefWidth="397.0">
-                                                  <xAxis>
-                                                      <CategoryAxis side="BOTTOM" />
-                                                  </xAxis>
-                                                  <yAxis>
-                                                      <NumberAxis side="LEFT" />
-                                                  </yAxis>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                                              </BarChart>
-                                          </children>
-                     <HBox.margin>
+    <children>
+        <VBox prefHeight="1080.0" prefWidth="515.0" styleClass="ColonneVbox">
+            <children>
+                <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                    <children>
+                        <Label prefHeight="18.0" prefWidth="190.0" text="DU" />
+                        <DatePicker fx:id="dateP1" prefHeight="26.0" prefWidth="342.0" />
+                    </children>
+                    <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                                      </VBox>
-                                      <VBox fx:id="zoneGraph" prefHeight="437.0" prefWidth="647.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                          <children>
-                                              <ComboBox fx:id="filtre2" prefWidth="150.0" promptText="Filtres" />
-                                              <LineChart fx:id="lineChart" prefHeight="502.0" prefWidth="733.0">
-                                                  <xAxis>
-                                                      <CategoryAxis fx:id="lineChartxAxis" side="BOTTOM" />
-                                                  </xAxis>
-                                                  <yAxis>
-                                                      <NumberAxis fx:id="lineChartYAxis"  side="LEFT" />
-                                                  </yAxis>
-                                              </LineChart>
-                                          </children>
-                     <HBox.margin>
+                    </VBox.margin>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                    <children>
+                        <Label prefHeight="18.0" prefWidth="191.0" text="AU" />
+                        <DatePicker fx:id="dateP2" prefHeight="26.0" prefWidth="341.0" />
+                    </children>
+                    <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                                      </VBox>
-                                      <VBox fx:id="chart3" prefHeight="437.0" prefWidth="440.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                          <children>
-                                              <ComboBox fx:id="filtre3" prefWidth="150.0" promptText="Filtres" />
-                                              <PieChart fx:id="pieChart" prefHeight="505.0" prefWidth="387.0">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </PieChart>
-                                          </children>
-                     <HBox.margin>
+                    </VBox.margin>
+                </HBox>
+                <VBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="285.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                    <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                                      </VBox>
-                                  </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="638.0" prefWidth="1626.0">
-                                  <children>
-                                      <VBox fx:id="cartoMap" prefHeight="624.0" prefWidth="878.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                                          <children>
-                                              <Label fx:id="textCarte" prefHeight="60.0" prefWidth="755.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-label-padding: 2; -fx-padding: 2;" text="Cartographie sismique à &lt;ZONE&gt; de &lt;DATEMIN&gt; à &lt;DATEMAX&gt;" wrapText="true">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </padding></Label>
-                        <AnchorPane fx:id="zoneMap" prefHeight="550.0" prefWidth="726.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                                          </children>
-                     <HBox.margin>
+                    </VBox.margin>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" minWidth="296.0" prefHeight="28.0" prefWidth="296.0" spacing="10.0">
+                            <children>
+                                <Button fx:id="btnOpenCSV" mnemonicParsing="false" text="Open CSV" />
+                                <Button fx:id="btnDashboard" mnemonicParsing="false" text="Dashboard" />
+                                <Button fx:id="btnTableview" mnemonicParsing="false" text="Tableview" />
+                            </children>
+                        </HBox>
+                        <Label fx:id="messageFichier" minHeight="60.0" prefHeight="60.0" prefWidth="370.0" style="-fx-wrap-text: true; -fx-border-color: black; -fx-label-padding: 2; -fx-border-radius: 8;" text="Ouvert avec Succès ! / Erreur import + nom fichier" />
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                    <children>
+                        <Label prefHeight="18.0" prefWidth="187.0" text="Lieu :" />
+                        <ComboBox prefHeight="25.0" prefWidth="333.0" />
+                    </children>
+                    <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                                      </VBox>
-                  <VBox fx:id="cartoHeatMap" prefHeight="634.0" prefWidth="880.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
-                     <children>
-                        <Label fx:id="textHeatMap" prefHeight="60.0" prefWidth="877.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-label-padding: 2; -fx-padding: 2;" text="HeatMap sismique à &lt;ZONE&gt; de &lt;DATEMIN&gt; à &lt;DATEMAX&gt;" wrapText="true">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </padding>
-                        </Label>
-                        <AnchorPane fx:id="zoneHeatMap" prefHeight="550.0" prefWidth="728.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
-                     </children>
-                     <HBox.margin>
+                    </VBox.margin>
+                </HBox>
+                <VBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                    <children>
+                        <Label fx:id="iMax" text="Intensé MAX :" />
+                    </children>
+                    <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </VBox>
-                                  </children>
-                              </HBox>
-                          </children>
-                      </VBox>
-                  </children>
-              </HBox>
+                    </VBox.margin>
+                </VBox>
+                <VBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                    <children>
+                        <Label fx:id="iMin" text="Intensé MIN :" />
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </VBox.margin>
+                </VBox>
+                <VBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                    <children>
+                        <Label fx:id="iMoy" text="Intensé MOY :" />
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </VBox.margin>
+                </VBox>
+                <VBox prefHeight="546.0" prefWidth="285.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                    <children>
+                        <TextField fx:id="searchBar" text="Search" />
+                        <Label prefHeight="16.0" prefWidth="244.0" text="Informations complémentaire :" />
+                        <ListView fx:id="listViewAttributs" prefHeight="504.0" prefWidth="263.0" style="-fx-background-radius: 8; -fx-border-radius: 8;" />
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </VBox.margin>
+                </VBox>
+            </children>
+        </VBox>
+        <VBox prefHeight="1080.0" prefWidth="1631.0">
+            <children>
+                <HBox prefHeight="451.0" prefWidth="1558.0">
+                    <children>
+                        <VBox fx:id="zoneHisto" prefHeight="300.0" prefWidth="406.5" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                            <children>
+                                <ComboBox fx:id="filtre1" prefWidth="150.0" promptText="Filtres" />
+                                <BarChart fx:id="barChart" prefHeight="505.0" prefWidth="397.0">
+                                    <xAxis>
+                                        <CategoryAxis fx:id="barxAxis" side="BOTTOM" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis fx:id="baryAxis" side="LEFT" />
+                                    </yAxis>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </BarChart>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="zoneGraph" prefHeight="437.0" prefWidth="647.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                            <children>
+                                <ComboBox fx:id="filtre2" prefWidth="150.0" promptText="Filtres" />
+                                <LineChart fx:id="lineChart" prefHeight="502.0" prefWidth="733.0">
+                                    <xAxis>
+                                        <CategoryAxis fx:id="lineChartxAxis" side="BOTTOM" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis fx:id="lineChartYAxis"  side="LEFT" />
+                                    </yAxis>
+                                </LineChart>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="chart3" prefHeight="437.0" prefWidth="440.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                            <children>
+                                <ComboBox fx:id="filtre3" prefWidth="150.0" promptText="Filtres" />
+                                <PieChart fx:id="pieChart" prefHeight="505.0" prefWidth="387.0">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </PieChart>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+                <HBox prefHeight="638.0" prefWidth="1626.0">
+                    <children>
+                        <VBox fx:id="cartoMap" prefHeight="624.0" prefWidth="878.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                            <children>
+                                <Label fx:id="textCarte" prefHeight="60.0" prefWidth="755.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-label-padding: 2; -fx-padding: 2;" text="Cartographie sismique à &lt;ZONE&gt; de &lt;DATEMIN&gt; à &lt;DATEMAX&gt;" wrapText="true">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                    <padding>
+                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                    </padding></Label>
+                                <AnchorPane fx:id="zoneMap" prefHeight="550.0" prefWidth="726.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="cartoHeatMap" prefHeight="634.0" prefWidth="880.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                            <children>
+                                <Label fx:id="textHeatMap" prefHeight="60.0" prefWidth="877.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-label-padding: 2; -fx-padding: 2;" text="HeatMap sismique à &lt;ZONE&gt; de &lt;DATEMIN&gt; à &lt;DATEMAX&gt;" wrapText="true">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                    <padding>
+                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                    </padding>
+                                </Label>
+                                <AnchorPane fx:id="zoneHeatMap" prefHeight="550.0" prefWidth="728.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </HBox.margin>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</HBox>

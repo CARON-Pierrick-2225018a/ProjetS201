@@ -3,6 +3,7 @@ package seismeApp.View;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -56,14 +57,26 @@ public class AppView implements Initializable {
     @FXML
     public LineChart<String,Number> lineChart;
     @FXML
-    private CategoryAxis lineChartxAxis ;
+    public CategoryAxis lineChartxAxis ;
     @FXML
-    private NumberAxis lineChartyAxis ;
+    public NumberAxis lineChartyAxis ;
+
+
+
+    @FXML
+    public BarChart barChart;
+    @FXML
+    public CategoryAxis barxAxis;
+    @FXML
+    public NumberAxis baryAxis;
+    @FXML
+    public VBox zoneHisto;
 
 
     private MapSeismeView mapSeismeView;
     private HeatMapSeismeView heatMapSeismeView;
     private GraphView graphView;
+    private HistoView histoView;
 
     @FXML
     public void initialize(URL location,ResourceBundle resources){
@@ -72,7 +85,7 @@ public class AppView implements Initializable {
         heatMapSeismeView= new HeatMapSeismeView(zoneHeatMap);
         heatMapSeismeView.getView();
         graphView = new GraphView(zoneGraph,lineChart,lineChartxAxis,lineChartyAxis);
-
+        histoView = new HistoView(zoneHisto,barChart,barxAxis,baryAxis);
     }
 
 }
