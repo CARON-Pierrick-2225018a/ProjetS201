@@ -23,10 +23,10 @@ public class HistoView {
         viewModel = new HistoViewModel();
 
         histoChart.getData().add(viewModel.getSeries());
-        histoChart.setBarGap(0);
+        //histoChart.setBarGap(0);
         histoChart.setCategoryGap(0);
         histoChart.setAnimated(false);
-
+        histoChart.setStyle("-fx-legend-visible: false");
         setBarColors();
     }
 

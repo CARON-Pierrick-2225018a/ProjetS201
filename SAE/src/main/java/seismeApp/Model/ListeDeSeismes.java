@@ -320,6 +320,41 @@ public class ListeDeSeismes {
 
         return sortedList;
     };
+    // on tri par proximité d'un seisme avec une distance max
+    public ArrayList<Seisme> triProximite(Seisme s, double distanceMax, boolean reverse) {
+        ArrayList<Seisme> sortedList = new ArrayList<>(seismes);
+        Comparator<Seisme> proximityComparator = new Comparator<Seisme>() {
+            @Override
+            public int compare(Seisme seisme1, Seisme seisme2) {
+                double distance1 = calculerDistance(seisme1, s);
+                double distance2 = calculerDistance(seisme2, s);
+                if (distance1 < distance2) {
+                    return -1;
+                } else if (distance1 > distance2) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        };
+
+        Collections.sort(sortedList, proximityComparator);
+
+        ArrayList<Seisme> filteredList = new ArrayList<>();
+        for (Seisme seisme : sortedList) {
+            double distance = calculerDistance(seisme, s);
+            if (distance <= distanceMax) { // on supprime si la distance est super a la listance max
+                filteredList.add(seisme);
+            }
+        }
+
+        // Inversion de l'ordre si reverse est true
+        if (reverse) {
+            Collections.reverse(filteredList);
+        }
+        seismes=filteredList;
+        return seismes;
+    }
     //pour calculer la distance entre deux points
     private double calculerDistance(Seisme seisme1, Seisme seisme2) {
         double lat1 = seisme1.getLatitude();
