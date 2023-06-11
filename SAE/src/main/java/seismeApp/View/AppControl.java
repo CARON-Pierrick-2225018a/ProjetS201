@@ -1,7 +1,6 @@
 package seismeApp.View;
 
 
-import com.gluonhq.maps.MapView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,9 +8,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -43,20 +40,18 @@ public class AppControl implements Initializable {
 
     @FXML
     public VBox cartoMap;
-
     @FXML
     public Label textCarte;
-
-
     @FXML
     public AnchorPane zoneMap;
+
     @FXML
     public AnchorPane HeatMap;
 
+
+
     private MapSeismeView mapSeismeView;
     private HeatMapSeismeView heatMapSeismeView;
-    //private AnchorPane
-
 
     @FXML
     public void initialize(URL location,ResourceBundle resources){

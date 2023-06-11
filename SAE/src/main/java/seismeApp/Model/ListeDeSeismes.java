@@ -1,18 +1,16 @@
 package seismeApp.Model;
 
 
-import seismeApp.Main;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Time;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class ListeDeSeismes {
     private ArrayList<Seisme> seismes;

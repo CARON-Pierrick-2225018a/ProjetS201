@@ -20,7 +20,6 @@ public class Seisme {
     private String qualiteIntensite;
 
     // Constructeur de la classe
-
     public Seisme(int identifiant, Date date, Time heure, String zone, String region,
                   String choc, double xRGF93L93, double yRGF93L93, double latitude,
                   double longitude, double intensite, String qualiteIntensite) {
@@ -58,7 +57,7 @@ public class Seisme {
                 ", zone: '" + zone + '\'' +
                 ", region: '" + region + '\'' +
                 ", choc: '" + strChoc + '\'' +
-                //", xRGF93: " + xRGF93L93 +
+                //", xRGF93: " + xRGF93L93 + // car pas super intéressant a affiché
                 //", yRGF93: " + yRGF93L93 +
                 ", latitude: " + latitude +
                 ", longitude: " + longitude +
@@ -67,100 +66,75 @@ public class Seisme {
                 ']'+"\n";
     }
 
-    // A modifier plus tard
-
     public double getIntensite() {
         return intensite;
     }
-
     public void setIntensite(double intensite) {
         this.intensite = intensite;
     }
-
     public double getLongitude() {
         return longitude;
     }
-
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
-
     public double getLatitude() {
         return latitude;
     }
-
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-
     public Date getDate() {
         return date;
     }
-
     public void setDate(Date date) {
         this.date = date;
     }
-
     public String getQualiteIntensite() {
         return qualiteIntensite;
     }
-
     public void setQualiteIntensite(String qualiteIntensite) {
         this.qualiteIntensite = qualiteIntensite;
     }
-
     public int getIdentifiant() {
         return identifiant;
     }
-
     public void setIdentifiant(int identifiant) {
         this.identifiant = identifiant;
     }
-
     public Time getHeure() {
         return heure;
     }
-
     public void setHeure(Time heure) {
         this.heure = heure;
     }
-
     public String getZone() {
         return zone;
     }
-
     public void setZone(String zone) {
         this.zone = zone;
     }
-
     public String getRegion() {
         return region;
     }
-
     public void setRegion(String region) {
         this.region = region;
     }
-
     public String getChoc() {
         return choc;
     }
-
     public void setChoc(String choc) {
         this.choc = choc;
     }
-
     public double getxRGF93L93() {
         return xRGF93L93;
     }
-
     public void setxRGF93L93(double xRGF93L93) {
         this.xRGF93L93 = xRGF93L93;
     }
-
     public double getyRGF93L93() {
         return yRGF93L93;
     }
-
     public void setyRGF93L93(double yRGF93L93) {
         this.yRGF93L93 = yRGF93L93;
     }

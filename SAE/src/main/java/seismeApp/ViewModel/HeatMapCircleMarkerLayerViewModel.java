@@ -4,7 +4,6 @@ import com.gluonhq.maps.MapPoint;
 import javafx.scene.paint.Color;
 import seismeApp.Model.ListeDeSeismes;
 import seismeApp.Model.Seisme;
-
 import java.util.ArrayList;
 
 public class HeatMapCircleMarkerLayerViewModel {
@@ -13,33 +12,34 @@ public class HeatMapCircleMarkerLayerViewModel {
     private ArrayList<MapPoint> listMapPoint;
     private ArrayList<Color> listColor;
     private ArrayList<Double> listIntensite;
-
     private ListeDeSeismes seismes;
 
 
     public ArrayList<MapPoint> getListMapPoint() {
         return listMapPoint;
     }
-
     public void setListMapPoint(ArrayList<MapPoint> listMapPoint) {
         this.listMapPoint = listMapPoint;
     }
-
     public ArrayList<Color> getListColor() {
         return listColor;
     }
-
     public void setListColor(ArrayList<Color> listColor) {
         this.listColor = listColor;
     }
-
     public ArrayList<Double> getListIntensite() {
         return listIntensite;
     }
-
     public void setListIntensite(ArrayList<Double> listIntensite) {
         this.listIntensite = listIntensite;
     }
+    public ListeDeSeismes getSeismes() {
+        return seismes;
+    }
+    public void setSeismes(ListeDeSeismes seismes) {
+        this.seismes = seismes;
+    }
+
 
     public HeatMapCircleMarkerLayerViewModel(){
         seismes = new ListeDeSeismes();
@@ -66,13 +66,5 @@ public class HeatMapCircleMarkerLayerViewModel {
             listIntensite.add(50-s.getIntensite()*5.5);
         }
     }
-    public ListeDeSeismes getSeismes() {
-        return seismes;
-    }
-
-    public void setSeismes(ListeDeSeismes seismes) {
-        this.seismes = seismes;
-    }
-
 
 }

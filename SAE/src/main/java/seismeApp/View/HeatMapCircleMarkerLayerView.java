@@ -3,21 +3,14 @@ package seismeApp.View;
 import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
 import eu.hansolo.fx.heatmap.HeatMap;
-import eu.hansolo.toolboxfx.geom.Point;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventType;
 import javafx.geometry.Point2D;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.Bloom;
-import javafx.scene.effect.Effect;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
-import seismeApp.ViewModel.CustomCircleMarkerLayerViewModel;
 import seismeApp.ViewModel.HeatMapCircleMarkerLayerViewModel;
 
 import java.util.ArrayList;
@@ -28,14 +21,11 @@ public class HeatMapCircleMarkerLayerView extends MapLayer {
 
 
     private ObservableList<Circle> listCircle= FXCollections.observableArrayList();
-
-
-
     private ArrayList<MapPoint> listMapPoint;
     private ArrayList<Double> listIntensite;
     private ArrayList<Color> listColor;
-
     private HeatMap heatMap = new HeatMap(700,500);
+    private HeatMapCircleMarkerLayerViewModel viewModel;
 
     public HeatMap getHeatMap() {
         return heatMap;
@@ -46,7 +36,6 @@ public class HeatMapCircleMarkerLayerView extends MapLayer {
     }
 */
 
-    private HeatMapCircleMarkerLayerViewModel viewModel;
 
     public HeatMapCircleMarkerLayerView() {
         viewModel = new HeatMapCircleMarkerLayerViewModel();
@@ -70,15 +59,9 @@ public class HeatMapCircleMarkerLayerView extends MapLayer {
 
             // Créer le dégradé radial
 
-            RadialGradient gradient = new RadialGradient(0,
-                    0,
-                    0.5,
-                    0.5,
-                    radius,
-                    false,
-                    CycleMethod.NO_CYCLE,
-                    new Stop(0, opaqueColor),
-                    new Stop(1, transparentColor));
+            RadialGradient gradient = new RadialGradient(0,0,0.5,0.5,radius,
+                    false, CycleMethod.NO_CYCLE,new Stop(0, opaqueColor),new Stop(1,
+                    transparentColor));
 
             Circle circle = new Circle(radius, gradient);
             circle.setOpacity(0.5);
@@ -100,7 +83,7 @@ public class HeatMapCircleMarkerLayerView extends MapLayer {
         /* Conversion du MapPoint vers Point2D */
         for (int i = 0 ; i<listMapPoint.size(); i++){
             Point2D point2d = this.getMapPoint(listMapPoint.get(i).getLatitude(),
-                                               listMapPoint.get(i).getLongitude());
+                    listMapPoint.get(i).getLongitude());
 
             /* Déplace le cercle selon les coordonnées du point */
             listCircle.get(i).setTranslateX(point2d.getX());
