@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: silver;" stylesheets="@../../../../../../ProjetTest/SAE/src/main/resources/seismeApp/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seismeApp.View.AppControl">
+<HBox prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: silver;" stylesheets="@../../../../../../ProjetTest/SAE/src/main/resources/seismeApp/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seismeApp.View.AppView">
                   <children>
                       <VBox prefHeight="1080.0" prefWidth="515.0" styleClass="ColonneVbox">
                           <children>
@@ -113,15 +113,15 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                                       </VBox>
-                                      <VBox fx:id="chart2" prefHeight="437.0" prefWidth="647.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
+                                      <VBox fx:id="zoneGraph" prefHeight="437.0" prefWidth="647.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                                           <children>
                                               <ComboBox fx:id="filtre2" prefWidth="150.0" promptText="Filtres" />
                                               <LineChart fx:id="lineChart" prefHeight="502.0" prefWidth="733.0">
                                                   <xAxis>
-                                                      <CategoryAxis side="BOTTOM" />
+                                                      <CategoryAxis fx:id="lineChartxAxis" side="BOTTOM" />
                                                   </xAxis>
                                                   <yAxis>
-                                                      <NumberAxis side="LEFT" />
+                                                      <NumberAxis fx:id="lineChartYAxis"  side="LEFT" />
                                                   </yAxis>
                                               </LineChart>
                                           </children>
@@ -174,7 +174,7 @@
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding>
                         </Label>
-                        <AnchorPane fx:id="HeatMap" prefHeight="550.0" prefWidth="728.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
+                        <AnchorPane fx:id="zoneHeatMap" prefHeight="550.0" prefWidth="728.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-radius: 8;" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

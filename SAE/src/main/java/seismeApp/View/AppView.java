@@ -3,6 +3,9 @@ package seismeApp.View;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -12,7 +15,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AppControl implements Initializable {
+public class AppView implements Initializable {
 
     @FXML
     public DatePicker dateP1;
@@ -46,19 +49,30 @@ public class AppControl implements Initializable {
     public AnchorPane zoneMap;
 
     @FXML
-    public AnchorPane HeatMap;
+    public AnchorPane zoneHeatMap;
 
+    @FXML
+    public VBox zoneGraph;
+    @FXML
+    public LineChart<String,Number> lineChart;
+    @FXML
+    private CategoryAxis lineChartxAxis ;
+    @FXML
+    private NumberAxis lineChartyAxis ;
 
 
     private MapSeismeView mapSeismeView;
     private HeatMapSeismeView heatMapSeismeView;
+    private GraphView graphView;
 
     @FXML
     public void initialize(URL location,ResourceBundle resources){
         mapSeismeView = new MapSeismeView(zoneMap);
         mapSeismeView.getView();
-        heatMapSeismeView= new HeatMapSeismeView(HeatMap);
+        heatMapSeismeView= new HeatMapSeismeView(zoneHeatMap);
         heatMapSeismeView.getView();
+        graphView = new GraphView(zoneGraph,lineChart,lineChartxAxis,lineChartyAxis);
+
     }
 
 }

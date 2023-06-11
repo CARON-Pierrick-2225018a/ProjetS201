@@ -2,7 +2,6 @@ package seismeApp.View;
 
 import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
-import eu.hansolo.fx.heatmap.HeatMap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
@@ -12,6 +11,7 @@ import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import seismeApp.ViewModel.HeatMapCircleMarkerLayerViewModel;
+//import eu.hansolo.fx.heatmap.HeatMap;
 
 import java.util.ArrayList;
 
@@ -24,13 +24,13 @@ public class HeatMapCircleMarkerLayerView extends MapLayer {
     private ArrayList<MapPoint> listMapPoint;
     private ArrayList<Double> listIntensite;
     private ArrayList<Color> listColor;
-    private HeatMap heatMap = new HeatMap(700,500);
+    //private HeatMap heatMap = new HeatMap(700,500);
     private HeatMapCircleMarkerLayerViewModel viewModel;
-
+/*
     public HeatMap getHeatMap() {
         return heatMap;
     }
-/*
+
     public void setHeatMap(HeatMap heatMap) {
         this.heatMap = heatMap;
     }

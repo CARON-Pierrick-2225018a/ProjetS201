@@ -10,12 +10,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import seismeApp.ViewModel.CircleClickHandler;
 import seismeApp.ViewModel.CustomCircleMarkerLayerViewModel;
-
 import java.util.ArrayList;
 
 public class CustomCircleMarkerLayerView extends MapLayer {
-
-
     private ObservableList<Circle> listCircle= FXCollections.observableArrayList();
     private ArrayList<MapPoint> listMapPoint;
     private ArrayList<Double> listIntensite;

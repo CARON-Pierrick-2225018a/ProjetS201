@@ -47,7 +47,7 @@ public class CustomCircleMarkerLayerViewModel {
         listIntensite = new ArrayList<>();
         listIndentifiant = new ArrayList<>();
 
-        //TODO ici on va devoir enlever de la liste seismes les elements pas dans la combo box lieux
+        // TODO ici on va devoir enlever de la liste seismes les elements pas dans la combo box lieux
 
         seismes.setSeismes( seismes.triIntensite(true));
         //System.out.println(seismes.getSeismes()); debug pour voir si csv bien chargé
