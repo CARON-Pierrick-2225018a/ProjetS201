@@ -12,6 +12,7 @@ import seismeApp.Model.Seisme;
 import java.awt.event.ActionEvent;
 import java.beans.EventHandler;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GraphListViewModel {
     private ListeDeSeismes listDeSeismes;
@@ -25,6 +26,8 @@ public class GraphListViewModel {
         this.listDeSeismes = new ListeDeSeismes();
         this.listDeSeismes.setSeismes(listDeSeismes.triDate(true));
         listeDeRegions.addAll(listDeSeismes.getRegions());
+        Collections.sort(listeDeRegions); // on tri par ordre alphabétique
+
         seismesProperty = new SimpleListProperty<>(FXCollections.observableArrayList(listDeSeismes.getSeismes()));
         regionsProperty = new SimpleListProperty<>(FXCollections.observableArrayList(listeDeRegions));
     }

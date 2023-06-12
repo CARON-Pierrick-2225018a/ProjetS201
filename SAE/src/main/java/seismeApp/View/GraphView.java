@@ -1,5 +1,6 @@
 package seismeApp.View;
 
+import javafx.beans.property.ListProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -27,5 +28,8 @@ public class GraphView {
 
     public GraphViewModel getViewModel() {
         return viewModel;
+    }
+    public ListProperty<String> listRegionProperty(){
+        return viewModel.listRegionProperty();
     }
 }

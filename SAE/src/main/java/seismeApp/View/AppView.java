@@ -70,10 +70,16 @@ public class AppView implements Initializable {
     public NumberAxis baryAxis;
     @FXML
     public VBox zoneHisto;
+
+    @FXML
+    public ComboBox filtre3;
     @FXML
     public ComboBox filtre2;
     @FXML
     public ComboBox filtre1;
+    @FXML
+    public ComboBox filtre0;
+
     @FXML
     public VBox zoneSecteur;
     @FXML
@@ -91,7 +97,7 @@ public class AppView implements Initializable {
         if (filtre2.getValue() != null) {
             graphView.lineChart.getData().clear();
             ArrayList<XYChart.Series<String, Number>> data = graphView.getViewModel().updatedListProperty(ListModel.getListDeSeismes().rechercheRegion(filtre2.getValue().toString()));
-            System.out.println(data.get(1).getData());
+            //System.out.println(data.get(1).getData());
             graphView.lineChart.getData().addAll(data);
         }
     };
@@ -115,8 +121,11 @@ public class AppView implements Initializable {
         histoView = new HistoView(zoneHisto,barChart );
         secteurView = new SecteurView( zoneSecteur,pieChart);
         indicStatsView = new IndicStatsView(iMax,iMin,iMoy);
-        filtre2.itemsProperty().bindBidirectional(ListModel.regionsPropertyProperty());
-        filtre1.itemsProperty().bindBidirectional(ListModel.regionsPropertyProperty());
+        filtre0.itemsProperty().bindBidirectional(graphView.listRegionProperty());
+        filtre1.itemsProperty().bindBidirectional(graphView.listRegionProperty());
+        filtre2.itemsProperty().bindBidirectional(graphView.listRegionProperty());
+        filtre3.itemsProperty().bindBidirectional(graphView.listRegionProperty());
+
 
     }
 
