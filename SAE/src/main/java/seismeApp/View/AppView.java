@@ -96,6 +96,8 @@ public class AppView implements Initializable {
     public void filtrer2(){
         if (filtre2.getValue() != null) {
             graphView.lineChart.getData().clear();
+            GraphListViewModel ListModel = new GraphListViewModel();
+
             ArrayList<XYChart.Series<String, Number>> data = graphView.getViewModel().updatedListProperty(ListModel.getListDeSeismes().rechercheRegion(filtre2.getValue().toString()));
             //System.out.println(data.get(1).getData());
             graphView.lineChart.getData().addAll(data);
@@ -107,7 +109,6 @@ public class AppView implements Initializable {
     private GraphView graphView;
     private HistoView histoView;
     private SecteurView secteurView;
-    private GraphListViewModel ListModel = new GraphListViewModel();
     private IndicStatsView indicStatsView;
 
     @FXML
