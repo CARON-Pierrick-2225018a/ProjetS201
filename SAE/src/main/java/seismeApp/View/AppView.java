@@ -1,4 +1,4 @@
-package seismeApp.View;
+package  seismeApp.View;
 
 
 import javafx.fxml.FXML;

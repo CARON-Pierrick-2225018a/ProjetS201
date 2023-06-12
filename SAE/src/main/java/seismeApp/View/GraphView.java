@@ -1,4 +1,5 @@
 package seismeApp.View;
+
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
