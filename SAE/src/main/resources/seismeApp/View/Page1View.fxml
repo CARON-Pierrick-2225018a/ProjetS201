@@ -90,13 +90,13 @@
                 </VBox>
             </children>
         </VBox>
-        <VBox prefHeight="1080.0" prefWidth="1631.0">
+        <VBox fx:id="appVBox" prefHeight="1080.0" prefWidth="1631.0">
             <children>
-                <HBox prefHeight="451.0" prefWidth="1558.0">
+                <HBox fx:id="appHboxHaut" prefHeight="451.0" prefWidth="1558.0">
                     <children>
                         <VBox fx:id="zoneHisto" prefHeight="300.0" prefWidth="406.5" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                             <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="155.0">
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="150.0">
                            <children>
                                       <ComboBox fx:id="filtre1" prefWidth="150.0" promptText="Filtres" />
                               <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#filtrer1" text="Appliquer" textAlignment="CENTER" />
@@ -120,15 +120,10 @@
                         </VBox>
                         <VBox fx:id="zoneGraph" prefHeight="437.0" prefWidth="647.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                             <children>
-                        <HBox fx:id="boxGraphesMilieu" prefHeight="100.0" prefWidth="200.0" spacing="145.0">
+                        <HBox fx:id="boxGraphesMilieu" prefHeight="100.0" prefWidth="200.0" spacing="380.0">
                            <children>
                                       <ComboBox fx:id="filtre2" prefWidth="150.0" promptText="Filtres" />
-                              <Button fx:id="changeView" mnemonicParsing="false" onAction="#changerVue" text="Passer en tableau" translateX="-30.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Button>
-                              <Button mnemonicParsing="false" onAction="#filtrer2" text="Appliquer" />
+                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#filtrer2" text="Appliquer" />
                            </children>
                         </HBox>
                                 <LineChart fx:id="lineChart" prefHeight="502.0" prefWidth="733.0">
@@ -162,7 +157,7 @@
                         <Insets />
                     </VBox.margin>
                 </HBox>
-                <HBox prefHeight="638.0" prefWidth="1626.0">
+                <HBox fx:id="appHboxBas" prefHeight="638.0" prefWidth="1626.0">
                     <children>
                         <VBox fx:id="cartoMap" prefHeight="624.0" prefWidth="878.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                             <children>

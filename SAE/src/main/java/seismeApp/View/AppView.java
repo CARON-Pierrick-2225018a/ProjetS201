@@ -1,8 +1,10 @@
 package  seismeApp.View;
 
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -87,7 +89,12 @@ public class AppView implements Initializable {
     public PieChart pieChart;
     @FXML
     public ListView listViewAttributs;
-
+    @FXML
+    public VBox appVBox;
+    @FXML
+    public HBox appHboxHaut;
+    @FXML
+    public HBox appHboxBas;
 
     @FXML
     public void filtrer1(){
@@ -146,7 +153,19 @@ public class AppView implements Initializable {
         filtre1.itemsProperty().bindBidirectional(graphView.listRegionProperty());
         filtre2.itemsProperty().bindBidirectional(graphView.listRegionProperty());
         filtre3.itemsProperty().bindBidirectional(graphView.listRegionProperty());
+        btnDashboard.setOnAction(event -> {
+            appVBox.getChildren().clear();
+            appVBox.getChildren().addAll(appHboxHaut,appHboxBas);
 
+        });
+        btnTableview.setOnAction(event -> {
+            appVBox.getChildren().clear();
+            TableRepresentationView tab = new TableRepresentationView();
+            tab.getTableView().prefHeightProperty().bind(appVBox.heightProperty());
+            appVBox.getChildren().add(tab.getTableView());
+
+
+        });
 
     }
 

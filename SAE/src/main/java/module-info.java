@@ -14,7 +14,7 @@ module projetsismique.sae {
     requires com.gluonhq.maps;
     requires java.sql;
     requires com.gluonhq.attach.util;
-
+    opens seismeApp.Model to javafx.base;
     opens seismeApp to javafx.fxml;
     exports seismeApp;
     exports seismeApp.View;
