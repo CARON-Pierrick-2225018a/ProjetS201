@@ -13,20 +13,18 @@ import javafx.scene.paint.Color;
 public class HistoView {
     private VBox zoneHisto;
     private BarChart<String, Number> histoChart;
-    private CategoryAxis histoChartxAxis;
-    private NumberAxis histoChartyAxis;
     private HistoViewModel viewModel;
 
-    public HistoView(VBox zone, BarChart<String, Number> histoChart, CategoryAxis lineChartxAxis, NumberAxis lineChartyAxis) {
+    public HistoView(VBox zone, BarChart<String, Number> histoChart) {
         zoneHisto = zone;
         this.histoChart = histoChart;
         viewModel = new HistoViewModel();
 
         histoChart.getData().add(viewModel.getSeries());
-        histoChart.setBarGap(0);
+        //histoChart.setBarGap(0);
         histoChart.setCategoryGap(0);
         histoChart.setAnimated(false);
-
+        histoChart.setStyle("-fx-legend-visible: false");
         setBarColors();
     }
 

@@ -67,73 +67,73 @@ public class ListeDeSeismes {
                 String[] data = line.split(csvSplitBy);
                 if (data.length<=12){
 
-                int identifiant = Integer.valueOf(data[0]);
-                String date = data[1];
-                String heure = data[2];
-                String nom = data[3];
-                String regionEpicentrale = data[4];
-                String choc = null;
-                if (data.length>=6)
-                    choc = data[5].isEmpty() ? null : data[5];
+                    int identifiant = Integer.valueOf(data[0]);
+                    String date = data[1];
+                    String heure = data[2];
+                    String nom = data[3];
+                    String regionEpicentrale = data[4];
+                    String choc = null;
+                    if (data.length>=6)
+                        choc = data[5].isEmpty() ? null : data[5];
 
-                double xRGF93L93 = 0;
-                double yRGF93L93 = 0;
-                double latitudeWGS84 = 0;
-                double longitudeWGS84 = 0;
-                double intensiteEpicentrale = 0;
-                String qualiteIntensiteEpicentrale = null;
-                Time heureSeisme = null;
-                if (data.length <= 6 ){
-                    xRGF93L93 = seismeList.get(seismes.size()).getxRGF93L93();
-                    yRGF93L93 = seismeList.get(seismes.size()).getyRGF93L93();
-                    latitudeWGS84 = seismeList.get(seismes.size()).getLatitude();
-                    longitudeWGS84 = seismeList.get(seismes.size()).getLongitude();
-                    intensiteEpicentrale = seismeList.get(seismes.size()).getIntensite();
-                    qualiteIntensiteEpicentrale = seismeList.get(seismes.size()).getQualiteIntensite();
-                }
-
-                else {
-                    xRGF93L93 = data[6].isEmpty() ? 0.0 : Double.parseDouble(data[6]);
-                    yRGF93L93 = data[7].isEmpty() ? 0.0 :Double.parseDouble(data[7]);
-                    latitudeWGS84 = data[8].isEmpty() ? 0.0 :Double.parseDouble(data[8]);
-                    longitudeWGS84 = data[9].isEmpty() ? 0.0 :Double.parseDouble(data[9]);
-                    intensiteEpicentrale = ((data.length <= 10) || data[10].isEmpty()) ? 0.0 : Double.parseDouble(data[10]);
-                    qualiteIntensiteEpicentrale = (data.length <= 11 || data[11].isEmpty()) ? null : data[11];
-                }
-                if (!heure.isEmpty()) {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("HH 'h' mm 'min'");
-                    dateFormat.setLenient(false);
-                    try {
-                        Date parsedDate = dateFormat.parse(heure);
-                        heureSeisme = new Time(parsedDate.getTime());
-                    } catch (ParseException e) {
-                        dateFormat = new SimpleDateFormat("HH 'h'");
-                        Date parsedDate = dateFormat.parse(heure);
-                        heureSeisme = new Time(parsedDate.getTime());
+                    double xRGF93L93 = 0;
+                    double yRGF93L93 = 0;
+                    double latitudeWGS84 = 0;
+                    double longitudeWGS84 = 0;
+                    double intensiteEpicentrale = 0;
+                    String qualiteIntensiteEpicentrale = null;
+                    Time heureSeisme = null;
+                    if (data.length <= 6 ){
+                        xRGF93L93 = seismeList.get(seismes.size()).getxRGF93L93();
+                        yRGF93L93 = seismeList.get(seismes.size()).getyRGF93L93();
+                        latitudeWGS84 = seismeList.get(seismes.size()).getLatitude();
+                        longitudeWGS84 = seismeList.get(seismes.size()).getLongitude();
+                        intensiteEpicentrale = seismeList.get(seismes.size()).getIntensite();
+                        qualiteIntensiteEpicentrale = seismeList.get(seismes.size()).getQualiteIntensite();
                     }
-                }
-                Date dateSeisme = null;
 
-                if (!date.isEmpty()) {
-                    ArrayList<SimpleDateFormat> knownPattern = new ArrayList<>();
-                    knownPattern.add(new SimpleDateFormat("yyyy'/'MM'/'dd'/'"));
-                    knownPattern.add(new SimpleDateFormat("yyyy'/'MM'/'"));
-                    knownPattern.add(new SimpleDateFormat("yyyy'/'"));
-
-
-                    for (SimpleDateFormat format : knownPattern) {
+                    else {
+                        xRGF93L93 = data[6].isEmpty() ? 0.0 : Double.parseDouble(data[6]);
+                        yRGF93L93 = data[7].isEmpty() ? 0.0 :Double.parseDouble(data[7]);
+                        latitudeWGS84 = data[8].isEmpty() ? 0.0 :Double.parseDouble(data[8]);
+                        longitudeWGS84 = data[9].isEmpty() ? 0.0 :Double.parseDouble(data[9]);
+                        intensiteEpicentrale = ((data.length <= 10) || data[10].isEmpty()) ? 0.0 : Double.parseDouble(data[10]);
+                        qualiteIntensiteEpicentrale = (data.length <= 11 || data[11].isEmpty()) ? null : data[11];
+                    }
+                    if (!heure.isEmpty()) {
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("HH 'h' mm 'min'");
+                        dateFormat.setLenient(false);
                         try {
-                            dateSeisme = format.parse(date);
+                            Date parsedDate = dateFormat.parse(heure);
+                            heureSeisme = new Time(parsedDate.getTime());
                         } catch (ParseException e) {
+                            dateFormat = new SimpleDateFormat("HH 'h'");
+                            Date parsedDate = dateFormat.parse(heure);
+                            heureSeisme = new Time(parsedDate.getTime());
                         }
                     }
+                    Date dateSeisme = null;
 
-                }
-                Seisme seisme = new Seisme(identifiant, dateSeisme, heureSeisme, nom, regionEpicentrale, choc,
-                        xRGF93L93, yRGF93L93, latitudeWGS84, longitudeWGS84,
-                        intensiteEpicentrale, qualiteIntensiteEpicentrale);
-                seismeList.add(seisme);
-            }};
+                    if (!date.isEmpty()) {
+                        ArrayList<SimpleDateFormat> knownPattern = new ArrayList<>();
+                        knownPattern.add(new SimpleDateFormat("yyyy'/'MM'/'dd'/'"));
+                        knownPattern.add(new SimpleDateFormat("yyyy'/'MM'/'"));
+                        knownPattern.add(new SimpleDateFormat("yyyy'/'"));
+
+
+                        for (SimpleDateFormat format : knownPattern) {
+                            try {
+                                dateSeisme = format.parse(date);
+                            } catch (ParseException e) {
+                            }
+                        }
+
+                    }
+                    Seisme seisme = new Seisme(identifiant, dateSeisme, heureSeisme, nom, regionEpicentrale, choc,
+                            xRGF93L93, yRGF93L93, latitudeWGS84, longitudeWGS84,
+                            intensiteEpicentrale, qualiteIntensiteEpicentrale);
+                    seismeList.add(seisme);
+                }};
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -389,7 +389,7 @@ public class ListeDeSeismes {
 
     // Méthodes pour obtenir les attributs minimum
     public double getIntensiteMin() {
-        double min = -1;
+        double min = 0;
         for (Seisme i : seismes) {
             if (i.getIntensite() < min) min = i.getIntensite();
         }
@@ -440,12 +440,14 @@ public class ListeDeSeismes {
     // Méthodes pour obtenir des moyennes d'attributs
     public double getIntensiteAvg(ListeDeSeismes liste) {
         long total = 0;
-
+        long valnul= 0;
         for (Seisme i : liste.getSeismes()) {
-            total += i.getIntensite();
+            if (i.getIntensite()>0)
+                total += i.getIntensite();
+            else
+                valnul++;
         }
-
-        return total / liste.getSeismes().size();
+        return total / (liste.getSeismes().size()-valnul);
     }
 
     public double getLongitudeAvg(ListeDeSeismes liste) {
@@ -601,7 +603,7 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-    
+
     public ArrayList<String> getRegions() {
         ArrayList<String> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {

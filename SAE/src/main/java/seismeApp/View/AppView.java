@@ -9,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import seismeApp.ViewModel.GraphListViewModel;
+import seismeApp.ViewModel.UpdateSeismesFilter;
+import seismeApp.ViewModel.openCSV;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -69,10 +71,24 @@ public class AppView implements Initializable {
     public NumberAxis baryAxis;
     @FXML
     public VBox zoneHisto;
+
+    @FXML
+    public ComboBox filtre3;
     @FXML
     public ComboBox filtre2;
     @FXML
     public ComboBox filtre1;
+    @FXML
+    public ComboBox filtre0;
+
+    @FXML
+    public VBox zoneSecteur;
+    @FXML
+    public PieChart pieChart;
+    @FXML
+    public ListView listViewAttributs;
+
+
     @FXML
     public void filtrer1(){
         System.out.println("b");
@@ -82,7 +98,7 @@ public class AppView implements Initializable {
         if (filtre2.getValue() != null) {
             graphView.lineChart.getData().clear();
             ArrayList<XYChart.Series<String, Number>> data = graphView.getViewModel().updatedListProperty(ListModel.getListDeSeismes().rechercheRegion(filtre2.getValue().toString()));
-            System.out.println(data.get(1).getData());
+            //System.out.println(data.get(1).getData());
             graphView.lineChart.getData().addAll(data);
         }
     };
@@ -110,19 +126,26 @@ public class AppView implements Initializable {
     private HeatMapSeismeView heatMapSeismeView;
     private GraphView graphView;
     private HistoView histoView;
+    private SecteurView secteurView;
     private GraphListViewModel ListModel = new GraphListViewModel();
+    private IndicStatsView indicStatsView;
 
     @FXML
     public void initialize(URL location,ResourceBundle resources){
-        mapSeismeView = new MapSeismeView(zoneMap);
+        btnOpenCSV.setOnAction(new openCSV());
+        mapSeismeView = new MapSeismeView(zoneMap,listViewAttributs);
         mapSeismeView.getView();
         heatMapSeismeView= new HeatMapSeismeView(zoneHeatMap);
         heatMapSeismeView.getView();
-        graphView = new GraphView(zoneGraph,lineChart,lineChartxAxis,lineChartyAxis);
-        histoView = new HistoView(zoneHisto,barChart,barxAxis,baryAxis);
+        graphView = new GraphView(zoneGraph,lineChart);
+        histoView = new HistoView(zoneHisto,barChart );
+        secteurView = new SecteurView( zoneSecteur,pieChart);
+        indicStatsView = new IndicStatsView(iMax,iMin,iMoy);
+        filtre0.itemsProperty().bindBidirectional(graphView.listRegionProperty());
+        filtre1.itemsProperty().bindBidirectional(graphView.listRegionProperty());
+        filtre2.itemsProperty().bindBidirectional(graphView.listRegionProperty());
+        filtre3.itemsProperty().bindBidirectional(graphView.listRegionProperty());
 
-        filtre2.itemsProperty().bindBidirectional(ListModel.regionsPropertyProperty());
-        filtre1.itemsProperty().bindBidirectional(ListModel.regionsPropertyProperty());
 
     }
 

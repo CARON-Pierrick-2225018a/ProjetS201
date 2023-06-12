@@ -1,13 +1,9 @@
 package seismeApp.ViewModel;
 
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
+import javafx.beans.property.ListProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
-import seismeApp.Model.ListeDeSeismes;
 import seismeApp.Model.Seisme;
-import seismeApp.View.GraphView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,9 +12,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class GraphViewModel {
-    private GraphListViewModel ListModel = new GraphListViewModel();
+    private GraphListViewModel listModel = new GraphListViewModel();
     private ArrayList<XYChart.Series<String, Number>> listSeries = new ArrayList<>();
-    private ObservableList<Seisme> listSeismes= ListModel.getSeismes();
+    private ObservableList<Seisme> listSeismes= listModel.getSeismes();
     public GraphViewModel() {
         //lineChart.setAnimated(false);
 
@@ -153,5 +149,8 @@ public class GraphViewModel {
 
         }
         return listSeriesTemp;
+    }
+    public ListProperty<String> listRegionProperty(){
+        return listModel.regionsPropertyProperty();
     }
 }

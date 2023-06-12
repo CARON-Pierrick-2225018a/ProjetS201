@@ -8,13 +8,13 @@ import seismeApp.Model.ListeDeSeismes;
 import seismeApp.Model.Seisme;
 
 public class HistoListViewModel {
-    private ListeDeSeismes listDeSeismes;
+    //private ListeDeSeismes listDeSeismes;
     private ListProperty<Seisme> seismesProperty;
 
     public HistoListViewModel() {
         //todo lier listeDeSeisme au filtre
-        this.listDeSeismes = new ListeDeSeismes();
-        this.listDeSeismes.setSeismes(listDeSeismes.triDate(true));
+        ListeDeSeismes listDeSeismes = new ListeDeSeismes();
+        listDeSeismes.setSeismes(listDeSeismes.triDate(true));
         seismesProperty = new SimpleListProperty<>(FXCollections.observableArrayList(listDeSeismes.getSeismes()));
     }
 
@@ -22,8 +22,8 @@ public class HistoListViewModel {
         return seismesProperty;
     }
 
-    public ObservableList<Seisme> getSeismes() {
-        return seismesProperty.get();
+    public ListProperty<Seisme> getSeismes() {
+        return seismesProperty ;
     }
 }
 
