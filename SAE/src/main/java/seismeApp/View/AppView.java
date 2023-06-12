@@ -1,19 +1,21 @@
 package  seismeApp.View;
 
 
+import javafx.beans.property.ListProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import seismeApp.ViewModel.GraphListViewModel;
+
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AppView implements Initializable {
@@ -71,12 +73,17 @@ public class AppView implements Initializable {
     public NumberAxis baryAxis;
     @FXML
     public VBox zoneHisto;
+    @FXML
+    public ComboBox filtre2;
+    @FXML
+    public ComboBox filtre1;
 
 
     private MapSeismeView mapSeismeView;
     private HeatMapSeismeView heatMapSeismeView;
     private GraphView graphView;
     private HistoView histoView;
+    private GraphListViewModel ListModel = new GraphListViewModel();
 
     @FXML
     public void initialize(URL location,ResourceBundle resources){
@@ -86,6 +93,9 @@ public class AppView implements Initializable {
         heatMapSeismeView.getView();
         graphView = new GraphView(zoneGraph,lineChart,lineChartxAxis,lineChartyAxis);
         histoView = new HistoView(zoneHisto,barChart,barxAxis,baryAxis);
+
+        filtre2.itemsProperty().bindBidirectional(ListModel.regionsPropertyProperty());
+        filtre1.itemsProperty().bindBidirectional(ListModel.regionsPropertyProperty());
     }
 
 }

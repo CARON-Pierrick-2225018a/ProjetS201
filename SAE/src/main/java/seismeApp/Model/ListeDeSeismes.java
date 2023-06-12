@@ -483,102 +483,132 @@ public class ListeDeSeismes {
 
 
     public ArrayList<Seisme> rechercheIntensite(int intensite) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getIntensite() == intensite) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheLongitude(int longitude) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getLongitude() == longitude) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheLatitude(int latitude) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getLatitude() == latitude) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheDate(Date date) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getDate().getTime() == date.getTime()) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheQualiteIntensite(String QI) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getQualiteIntensite() == QI) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheIdentifiant(int id) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getIdentifiant() == id) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheHeure(Time heure) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getHeure().getTime() == heure.getTime()) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheZone(String zone) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getZone() == zone) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheRegion(String region) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getRegion() == region) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
     }
 
     public ArrayList<Seisme> rechercheChoc(String choc) {
-        ArrayList<Seisme> tab_final = new ArrayList<>();
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
             if (seisme.getChoc() == choc) {
-                tab_final.add(seisme);
+                tabFinal.add(seisme);
             }
         }
-        return tab_final;
+        return tabFinal;
+    }
+
+    public ArrayList<Seisme> rechercheAvant(Date date) {
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getDate().before(date)) {
+                tabFinal.add(seisme);
+            }
+        }
+        return tabFinal;
+    }
+
+    public ArrayList<Seisme> rechercheApres(Date date) {
+        ArrayList<Seisme> tabFinal = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (seisme.getDate().after(date)) {
+                tabFinal.add(seisme);
+            }
+        }
+        return tabFinal;
+    }
+    
+    public ArrayList<String> getRegions() {
+        ArrayList<String> tabFinal = new ArrayList<>();
+        for (Seisme seisme : seismes) {
+            if (!tabFinal.contains(seisme.getRegion())) {
+                tabFinal.add(seisme.getRegion());
+            }
+        }
+        return tabFinal;
     }
 }
