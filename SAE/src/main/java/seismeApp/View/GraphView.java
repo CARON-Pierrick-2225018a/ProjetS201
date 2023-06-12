@@ -17,7 +17,7 @@ public class GraphView {
     public LineChart<String, Number> lineChart;
     private ObservableList<XYChart.Series<String, Number>> observableListSeries;
 
-    public GraphView(VBox zone, LineChart<String, Number> lineChart, CategoryAxis lineChartxAxis, NumberAxis lineChartyAxis) {
+    public GraphView(VBox zone, LineChart<String, Number> lineChart) {
         zoneGraph = zone;
         this.lineChart = lineChart;
         viewModel = new GraphViewModel();

@@ -17599,7 +17599,7 @@
 								"reference": {
 									"$ref": "AAAAAAGIqot7Y2YgkYY="
 								},
-								"navigable": "navigable"
+								"aggregation": "composite"
 							}
 						}
 					],

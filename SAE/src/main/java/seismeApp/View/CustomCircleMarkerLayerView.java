@@ -6,6 +6,7 @@ import com.gluonhq.maps.MapView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Point2D;
+import javafx.scene.control.ListView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import seismeApp.ViewModel.CircleClickHandler;
@@ -19,7 +20,8 @@ public class CustomCircleMarkerLayerView extends MapLayer {
     private ArrayList<Color> listColor;
     private CustomCircleMarkerLayerViewModel viewModel;
 
-    public CustomCircleMarkerLayerView(MapView mapView) {
+    public CustomCircleMarkerLayerView(MapView mapView,ListView list) {
+
         viewModel = new CustomCircleMarkerLayerViewModel();
         //MapPoint mapPoint,double intensite,Color color
         listMapPoint = viewModel.getListMapPoint();
@@ -27,7 +29,7 @@ public class CustomCircleMarkerLayerView extends MapLayer {
         listIntensite = viewModel.getListIntensite();
         for (int i = 0 ; i<listMapPoint.size(); i++){
             CircleClickHandler circleClickHandler = new CircleClickHandler(((viewModel.getSeismes()).getSeismes()).get(i),
-                    mapView,listMapPoint.get(i));
+                    mapView,listMapPoint.get(i),list);
 
             listCircle.add(new Circle(listIntensite.get(i)*0.3,listColor.get(i)));
             listCircle.get(i).setOnMouseClicked(circleClickHandler);

@@ -16,9 +16,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class GraphViewModel {
-    private GraphListViewModel listModel = new GraphListViewModel();
+    private GraphListViewModel ListModel = new GraphListViewModel();
     private ArrayList<XYChart.Series<String, Number>> listSeries = new ArrayList<>();
-    private ObservableList<Seisme> listSeismes= listModel.getSeismes();
+    private ObservableList<Seisme> listSeismes= ListModel.getSeismes();
     public GraphViewModel() {
         //lineChart.setAnimated(false);
 

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: silver;" stylesheets="@../../../../../../ProjetTest/SAE/src/main/resources/seismeApp/Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seismeApp.View.AppView">
+<HBox prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seismeApp.View.AppView">
     <children>
         <VBox prefHeight="1080.0" prefWidth="515.0" styleClass="ColonneVbox">
             <children>

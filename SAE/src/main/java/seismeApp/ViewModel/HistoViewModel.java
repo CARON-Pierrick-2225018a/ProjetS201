@@ -37,4 +37,5 @@ public class HistoViewModel {
     public XYChart.Series<String, Number> getSeries() {
         return series;
     }
+
 }
