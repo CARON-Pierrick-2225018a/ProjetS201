@@ -120,9 +120,14 @@
                         </VBox>
                         <VBox fx:id="zoneGraph" prefHeight="437.0" prefWidth="647.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                             <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="400.0">
+                        <HBox fx:id="boxGraphesMilieu" prefHeight="100.0" prefWidth="200.0" spacing="145.0">
                            <children>
                                       <ComboBox fx:id="filtre2" prefWidth="150.0" promptText="Filtres" />
+                              <Button fx:id="changeView" mnemonicParsing="false" onAction="#changerVue" text="Passer en tableau" translateX="-30.0">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
                               <Button mnemonicParsing="false" onAction="#filtrer2" text="Appliquer" />
                            </children>
                         </HBox>
