@@ -96,7 +96,12 @@
                     <children>
                         <VBox fx:id="zoneHisto" prefHeight="300.0" prefWidth="406.5" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                             <children>
-                                <ComboBox fx:id="filtre1" prefWidth="150.0" promptText="Filtres" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="155.0">
+                           <children>
+                                      <ComboBox fx:id="filtre1" prefWidth="150.0" promptText="Filtres" />
+                              <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#filtrer1" text="Appliquer" textAlignment="CENTER" />
+                           </children>
+                        </HBox>
                                 <BarChart fx:id="barChart" prefHeight="505.0" prefWidth="397.0">
                                     <xAxis>
                                         <CategoryAxis fx:id="barxAxis" side="BOTTOM" />
@@ -115,13 +120,18 @@
                         </VBox>
                         <VBox fx:id="zoneGraph" prefHeight="437.0" prefWidth="647.0" style="-fx-border-color: black; -fx-border-radius: 8; -fx-background-color: gainsboro; -fx-background-radius: 8; -fx-padding: 10; -fx-effect: dropShadow(gaussian,gray,5,0.4,0,2);">
                             <children>
-                                <ComboBox fx:id="filtre2" prefWidth="150.0" promptText="Filtres" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="400.0">
+                           <children>
+                                      <ComboBox fx:id="filtre2" prefWidth="150.0" promptText="Filtres" />
+                              <Button mnemonicParsing="false" onAction="#filtrer2" text="Appliquer" />
+                           </children>
+                        </HBox>
                                 <LineChart fx:id="lineChart" prefHeight="502.0" prefWidth="733.0">
                                     <xAxis>
                                         <CategoryAxis fx:id="lineChartxAxis" side="BOTTOM" />
                                     </xAxis>
                                     <yAxis>
-                                        <NumberAxis fx:id="lineChartYAxis"  side="LEFT" />
+                                        <NumberAxis fx:id="lineChartYAxis" side="LEFT" />
                                     </yAxis>
                                 </LineChart>
                             </children>

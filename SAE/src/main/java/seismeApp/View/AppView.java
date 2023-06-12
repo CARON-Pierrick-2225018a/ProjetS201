@@ -1,14 +1,9 @@
 package  seismeApp.View;
 
 
-import javafx.beans.property.ListProperty;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -77,7 +72,19 @@ public class AppView implements Initializable {
     public ComboBox filtre2;
     @FXML
     public ComboBox filtre1;
-
+    @FXML
+    public void filtrer1(){
+        System.out.println("b");
+    };
+    @FXML
+    public void filtrer2(){
+        if (filtre2.getValue() != null) {
+            graphView.lineChart.getData().clear();
+            ArrayList<XYChart.Series<String, Number>> data = graphView.getViewModel().updatedListProperty(ListModel.getListDeSeismes().rechercheRegion(filtre2.getValue().toString()));
+            System.out.println(data.get(1).getData());
+            graphView.lineChart.getData().addAll(data);
+        }
+    };
 
     private MapSeismeView mapSeismeView;
     private HeatMapSeismeView heatMapSeismeView;
@@ -96,6 +103,7 @@ public class AppView implements Initializable {
 
         filtre2.itemsProperty().bindBidirectional(ListModel.regionsPropertyProperty());
         filtre1.itemsProperty().bindBidirectional(ListModel.regionsPropertyProperty());
+
     }
 
 }

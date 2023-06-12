@@ -4,9 +4,13 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import seismeApp.Model.ListeDeSeismes;
 import seismeApp.Model.Seisme;
 
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
 import java.util.ArrayList;
 
 public class GraphListViewModel {
@@ -14,6 +18,7 @@ public class GraphListViewModel {
     private ListProperty<Seisme> seismesProperty;
     private ArrayList<String> listeDeRegions = new ArrayList<>();
     private ListProperty<String> regionsProperty;
+
 
     public GraphListViewModel() {
         //todo lier listeDeSeisme au filtre
@@ -42,5 +47,9 @@ public class GraphListViewModel {
 
     public ListProperty<String> regionsPropertyProperty() {
         return regionsProperty;
+    }
+
+    public ListeDeSeismes getListDeSeismes() {
+        return listDeSeismes;
     }
 }

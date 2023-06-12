@@ -525,7 +525,7 @@ public class ListeDeSeismes {
     public ArrayList<Seisme> rechercheQualiteIntensite(String QI) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
-            if (seisme.getQualiteIntensite() == QI) {
+            if (seisme.getQualiteIntensite().toString().compareTo(QI.toString()) == 0) {
                 tabFinal.add(seisme);
             }
         }
@@ -555,7 +555,7 @@ public class ListeDeSeismes {
     public ArrayList<Seisme> rechercheZone(String zone) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
-            if (seisme.getZone() == zone) {
+            if (seisme.getZone().toString().compareTo(zone.toString()) == 0) {
                 tabFinal.add(seisme);
             }
         }
@@ -565,7 +565,7 @@ public class ListeDeSeismes {
     public ArrayList<Seisme> rechercheRegion(String region) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
-            if (seisme.getRegion() == region) {
+            if (seisme.getRegion().toString().compareTo(region.toString()) == 0) {
                 tabFinal.add(seisme);
             }
         }
@@ -575,7 +575,7 @@ public class ListeDeSeismes {
     public ArrayList<Seisme> rechercheChoc(String choc) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
-            if (seisme.getChoc() == choc) {
+            if (seisme.getChoc().toString().compareTo(choc.toString()) == 0) {
                 tabFinal.add(seisme);
             }
         }

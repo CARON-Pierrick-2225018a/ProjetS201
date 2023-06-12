@@ -1,8 +1,12 @@
 package seismeApp.View;
 
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.VBox;
 import seismeApp.ViewModel.GraphListViewModel;
 import seismeApp.ViewModel.GraphViewModel;
@@ -10,7 +14,8 @@ import seismeApp.ViewModel.GraphViewModel;
 public class GraphView {
     private GraphViewModel viewModel;
     private VBox zoneGraph;
-    private LineChart<String, Number> lineChart;
+    public LineChart<String, Number> lineChart;
+    private ObservableList<XYChart.Series<String, Number>> observableListSeries;
 
     public GraphView(VBox zone, LineChart<String, Number> lineChart, CategoryAxis lineChartxAxis, NumberAxis lineChartyAxis) {
         zoneGraph = zone;
@@ -18,5 +23,9 @@ public class GraphView {
         viewModel = new GraphViewModel();
         //viewModel.getListSeries
         lineChart.getData().addAll(viewModel.getListSeries());
+    }
+
+    public GraphViewModel getViewModel() {
+        return viewModel;
     }
 }
