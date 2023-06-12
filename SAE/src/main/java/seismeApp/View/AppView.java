@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import seismeApp.ViewModel.GraphListViewModel;
 import seismeApp.ViewModel.UpdateSeismesFilter;
@@ -103,6 +104,25 @@ public class AppView implements Initializable {
             graphView.lineChart.getData().addAll(data);
         }
     };
+
+    @FXML
+    public Button changeView;
+
+    @FXML
+    public HBox boxGraphesMilieu;
+
+    @FXML
+    public void changerVue() {
+        if (changeView.getText().toString().compareTo("Passer en tableau") == 0) {
+            changeView.setText("Passer en graphique");
+            boxGraphesMilieu.setSpacing(137);
+
+        }
+        else {
+            changeView.setText("Passer en tableau");
+            boxGraphesMilieu.setSpacing(145);
+        }
+    }
 
     private MapSeismeView mapSeismeView;
     private HeatMapSeismeView heatMapSeismeView;
