@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.sql.Time;
 
+
 // La classe séisme représentera chaque séisme du csv importé
 public class Seisme {
     private int identifiant;
