@@ -1,14 +1,12 @@
 package seismeApp.View;
 
 import javafx.scene.control.TableView;
-import seismeApp.Model.ListeDeSeismes;
 import seismeApp.ViewModel.TableRepresentationViewModel;
 
 /**
  * La classe TableRepresentationView est responsable de l'affichage de la représentation tabulaire des séismes dans une vue.
  */
 public class TableRepresentationView {
-    private ListeDeSeismes listeDeSeismes = new ListeDeSeismes();
     private TableRepresentationViewModel viewModel = new TableRepresentationViewModel(new TableView());
     private TableView tab;
 

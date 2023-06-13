@@ -3,17 +3,13 @@ package seismeApp.ViewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import seismeApp.Model.ListeDeSeismes;
 import seismeApp.Model.Seisme;
-
-import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 /**
  * Le TableRepresentationViewModel est responsable de la création et de la gestion de la représentation tabulaire des séismes.
