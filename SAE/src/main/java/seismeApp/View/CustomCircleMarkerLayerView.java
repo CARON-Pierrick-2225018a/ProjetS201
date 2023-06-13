@@ -13,41 +13,48 @@ import seismeApp.ViewModel.CircleClickHandler;
 import seismeApp.ViewModel.CustomCircleMarkerLayerViewModel;
 import java.util.ArrayList;
 
+/**
+ * La classe CustomCircleMarkerLayerView est responsable de l'affichage des marqueurs de cercle personnalisés sur une carte.
+ */
 public class CustomCircleMarkerLayerView extends MapLayer {
-    private ObservableList<Circle> listCircle= FXCollections.observableArrayList();
+    private ObservableList<Circle> listCircle = FXCollections.observableArrayList();
     private ArrayList<MapPoint> listMapPoint;
     private ArrayList<Double> listIntensite;
     private ArrayList<Color> listColor;
     private CustomCircleMarkerLayerViewModel viewModel;
 
-    public CustomCircleMarkerLayerView(MapView mapView,ListView list) {
-
+    /**
+     * Constructeur de la classe CustomCircleMarkerLayerView.
+     *
+     * @param mapView La vue de la carte sur laquelle afficher les marqueurs.
+     * @param list    La liste de contrôle à mettre à jour lors du clic sur un cercle.
+     */
+    public CustomCircleMarkerLayerView(MapView mapView, ListView list) {
         viewModel = new CustomCircleMarkerLayerViewModel();
-        //MapPoint mapPoint,double intensite,Color color
         listMapPoint = viewModel.getListMapPoint();
         listColor = viewModel.getListColor();
         listIntensite = viewModel.getListIntensite();
-        for (int i = 0 ; i<listMapPoint.size(); i++){
-            CircleClickHandler circleClickHandler = new CircleClickHandler(((viewModel.getSeismes()).getSeismes()).get(i),
-                    mapView,listMapPoint.get(i),list);
 
-            listCircle.add(new Circle(listIntensite.get(i)*0.3,listColor.get(i)));
+        for (int i = 0; i < listMapPoint.size(); i++) {
+            CircleClickHandler circleClickHandler = new CircleClickHandler(
+                    viewModel.getSeismes().getSeismes().get(i),
+                    mapView, listMapPoint.get(i), list);
+
+            listCircle.add(new Circle(listIntensite.get(i) * 0.3, listColor.get(i)));
             listCircle.get(i).setOnMouseClicked(circleClickHandler);
         }
+
         this.getChildren().addAll(listCircle);
     }
 
     @Override
     protected void layoutLayer() {
-        /* Conversion du MapPoint vers Point2D */
-        for (int i = 0 ; i<listMapPoint.size(); i++){
+        for (int i = 0; i < listMapPoint.size(); i++) {
             Point2D point2d = this.getMapPoint(listMapPoint.get(i).getLatitude(),
                     listMapPoint.get(i).getLongitude());
 
-            /* Déplace le cercle selon les coordonnées du point */
             listCircle.get(i).setTranslateX(point2d.getX());
             listCircle.get(i).setTranslateY(point2d.getY());
         }
     }
-
 }

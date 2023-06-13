@@ -11,17 +11,24 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Le GraphViewModel est responsable de la manipulation des données nécessaires pour la vue graphique.
+ * Il gère les séries de données utilisées pour afficher les graphiques.
+ */
 public class GraphViewModel {
     private GraphListViewModel listModel = new GraphListViewModel();
     private ArrayList<XYChart.Series<String, Number>> listSeries = new ArrayList<>();
-    private ObservableList<Seisme> listSeismes= listModel.getSeismes();
-    public GraphViewModel() {
-        //lineChart.setAnimated(false);
+    private ObservableList<Seisme> listSeismes = listModel.getSeismes();
 
+    /**
+     * Constructeur de la classe GraphViewModel.
+     * Initialise les séries de données utilisées pour les graphiques.
+     */
+    public GraphViewModel() {
         // Création des séries avec les noms des intervalles
-        for (int i = 1; i <= 9; i++) { // si on veut les affiché il faut changer i
+        for (int i = 1; i <= 9; i++) {
             XYChart.Series<String, Number> s = new XYChart.Series<>();
-            if (i == 0) { // on affiche pas les non renseignés
+            if (i == 0) {
                 s.setName("intensité : <2");
             } else {
                 s.setName("intensité : " + i + "-" + (i + 1));
@@ -40,16 +47,10 @@ public class GraphViewModel {
             yearIntervalCounts.put(year, intervalCounts);
         }
 
+        // Trie des données par année
+        Map<Integer, Map<Integer, Integer>> sortedMap = new TreeMap<>(yearIntervalCounts);
 
-        Map<Integer,Map<Integer,Integer> > sortedMap = new TreeMap<>(yearIntervalCounts);
-        // on pourra se servir de ce genre de chose pour trier sur une durée voulu
-        //trier du debut jusqu'a un indice max
-        /*
-        if (sortedMap.size() > 10) {
-            sortedMap = new TreeMap<>(sortedMap).subMap(((TreeMap<Integer, Map<Integer, Integer>>) sortedMap).firstKey(),
-                    sortedMap.entrySet().stream().skip(10).findFirst().get().getKey());
-        }
-        */
+        // Sélection des données à afficher
         Integer size = 100;
         if (sortedMap.size() > size) {
             int entriesToSkip = sortedMap.size() - size;
@@ -70,31 +71,34 @@ public class GraphViewModel {
             for (Map.Entry<Integer, Map<Integer, Integer>> entry : sortedMap.entrySet()) {
                 int year = entry.getKey();
                 int count = entry.getValue().getOrDefault(i, 0);
-                //System.out.println(entry);
                 series.getData().add(new XYChart.Data<>(String.valueOf(year), count));
             }
-
         }
     }
-    public  ArrayList<XYChart.Series<String, Number>> getListSeries(){
+
+    /**
+     * Obtient la liste des séries de données utilisées pour les graphiques.
+     * @return La liste des séries de données.
+     */
+    public ArrayList<XYChart.Series<String, Number>> getListSeries() {
         return listSeries;
     }
 
+    /**
+     * Met à jour la liste des séries de données en fonction d'une nouvelle liste de séismes.
+     * @param liste La nouvelle liste de séismes.
+     * @return La liste des séries de données mise à jour.
+     */
     public ArrayList<XYChart.Series<String, Number>> updatedListProperty(ArrayList<Seisme> liste) {
-
-
         GraphListViewModel ListModelTemp = new GraphListViewModel();
         ListModelTemp.getListDeSeismes().setSeismes(liste);
         ArrayList<XYChart.Series<String, Number>> listSeriesTemp = new ArrayList<>();
-        ObservableList<Seisme> listSeismesTemp= ListModelTemp.getSeismes();
-
-
-        //lineChart.setAnimated(false);
+        ObservableList<Seisme> listSeismesTemp = ListModelTemp.getSeismes();
 
         // Création des séries avec les noms des intervalles
-        for (int i = 1; i <= 9; i++) { // si on veut les affiché il faut changer i
+        for (int i = 1; i <= 9; i++) {
             XYChart.Series<String, Number> s = new XYChart.Series<>();
-            if (i == 0) { // on affiche pas les non renseignés
+            if (i == 0) {
                 s.setName("intensité : <2");
             } else {
                 s.setName("intensité : " + i + "-" + (i + 1));
@@ -113,16 +117,10 @@ public class GraphViewModel {
             yearIntervalCounts.put(year, intervalCounts);
         }
 
-
+        // Trie des données par année
         Map<Integer, Map<Integer, Integer>> sortedMap = new TreeMap<>(yearIntervalCounts);
-        // on pourra se servir de ce genre de chose pour trier sur une durée voulu
-        //trier du debut jusqu'a un indice max
-        /*
-        if (sortedMap.size() > 10) {
-            sortedMap = new TreeMap<>(sortedMap).subMap(((TreeMap<Integer, Map<Integer, Integer>>) sortedMap).firstKey(),
-                    sortedMap.entrySet().stream().skip(10).findFirst().get().getKey());
-        }
-        */
+
+        // Sélection des données à afficher
         Integer size = 100;
         if (sortedMap.size() > size) {
             int entriesToSkip = sortedMap.size() - size;
@@ -143,14 +141,17 @@ public class GraphViewModel {
             for (Map.Entry<Integer, Map<Integer, Integer>> entry : sortedMap.entrySet()) {
                 int year = entry.getKey();
                 int count = entry.getValue().getOrDefault(i, 0);
-                //System.out.println(entry);
                 series.getData().add(new XYChart.Data<>(String.valueOf(year), count));
             }
-
         }
         return listSeriesTemp;
     }
-    public ListProperty<String> listRegionProperty(){
+
+    /**
+     * Obtient la propriété de liste des régions.
+     * @return La propriété de liste des régions.
+     */
+    public ListProperty<String> listRegionProperty() {
         return listModel.regionsPropertyProperty();
     }
 }

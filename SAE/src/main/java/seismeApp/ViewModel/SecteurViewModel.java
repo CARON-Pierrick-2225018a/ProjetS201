@@ -10,9 +10,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Le SecteurViewModel est responsable de la création des données pour le graphique en secteurs.
+ * Il collecte les données des types de chocs à partir de la liste de séismes et calcule les pourcentages correspondants.
+ * Les données sont ensuite stockées dans une liste observable utilisée par le graphique en secteurs.
+ */
 public class SecteurViewModel {
     private ObservableList<PieChart.Data> pieChartData ;
 
+    /**
+     * Initialise le SecteurViewModel et collecte les données des types de chocs à partir de la liste de séismes.
+     * Les pourcentages correspondants sont calculés et les données sont stockées dans une liste observable pour le graphique en secteurs.
+     */
     public SecteurViewModel(){
         pieChartData = FXCollections.observableArrayList();
         // TODO les filtres s'appliquent ici
@@ -43,6 +52,10 @@ public class SecteurViewModel {
         }
     }
 
+    /**
+     * Retourne la liste observable des données du graphique en secteurs.
+     * @return La liste observable des données du graphique en secteurs.
+     */
     public ObservableList<PieChart.Data> getPieChartData() {
         return pieChartData;
     }

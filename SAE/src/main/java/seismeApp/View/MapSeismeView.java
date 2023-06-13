@@ -10,6 +10,9 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * La classe MapSeismeView est responsable de l'affichage de la carte des séismes dans une vue.
+ */
 public class MapSeismeView {
 
     private MapView mapView;
@@ -18,6 +21,11 @@ public class MapSeismeView {
     private Button btnMoins= new Button("-");
     private VBox vbox = new VBox(btnPlus,btnMoins);
 
+    /**
+     * Constructeur de la classe MapSeismeView.
+     * @param zoneCarte L'AnchorPane qui contient la carte.
+     * @param listView La ListView associée à la carte.
+     */
     public MapSeismeView(AnchorPane zoneCarte, ListView listView){
         System.setProperty("javafx.platform", "desktop");
         System.setProperty("http.agent", "Gluon Mobile/1.0.3");
@@ -48,10 +56,12 @@ public class MapSeismeView {
             }
         });
 
-        //  MapPoint mapPoint = new MapPoint(46.227638, 2.213749); ajout point
         mapView.setCenter(mapPoint);
     }
 
+    /**
+     * Méthode pour obtenir la vue de la carte.
+     */
     public void getView(){
 
         zone.getChildren().add(mapView);
