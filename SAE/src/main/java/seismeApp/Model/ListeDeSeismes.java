@@ -12,25 +12,45 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
+/**
+ * Cette classe représente une liste de séismes.
+ */
 public class ListeDeSeismes {
     private ArrayList<Seisme> seismes;
 
-    // Constructeur de la liste depuis un csv
+    /**
+     * Constructeur de la liste à partir d'un fichier CSV.
+     *
+     * @param pathToCSV Chemin du fichier CSV contenant les séismes.
+     */
     public ListeDeSeismes(String pathToCSV) {
         seismes = new ArrayList<>();
         seismes = loadCSV(pathToCSV,"¤");
     }
+
+    /**
+     * Constructeur de la liste par défaut.
+     * Utilise un fichier CSV par défaut pour charger les séismes.
+     */
     public ListeDeSeismes() {
         seismes = new ArrayList<>();
         seismes = loadCSV("src/main/resources/seismeApp/SisFranceBDD2.csv","¤");
     }
 
-    // Ajouter un élément à la liste
+    /**
+     * Ajoute un séisme à la liste.
+     *
+     * @param seisme Séisme à ajouter.
+     */
     public void addSeisme(Seisme seisme) {
         seismes.add(seisme);
     }
 
-    // on détruit de la liste un seisme par rapport a son identifiant
+    /**
+     * Supprime un séisme de la liste en utilisant son identifiant.
+     *
+     * @param identifiant Identifiant du séisme à supprimer.
+     */
     public void removeSeisme(int identifiant){
         for (Seisme s : seismes){
             if (s.getIdentifiant()==identifiant)
@@ -38,22 +58,40 @@ public class ListeDeSeismes {
             break;
         }
     }
-    // on détruit de la liste un seisme
+    /**
+     * Supprime un séisme de la liste.
+     *
+     * @param s Séisme à supprimer.
+     */
     public void removeSeisme(Seisme s){
         seismes.remove(s);
     }
 
-    // Getter de la liste
+    /**
+     * Retourne la liste des séismes.
+     *
+     * @return Liste des séismes.
+     */
     public ArrayList<Seisme> getSeismes() {
         return seismes;
     }
 
-    // On remplace la liste
+    /**
+     * Remplace la liste des séismes par une nouvelle liste.
+     *
+     * @param seismes Nouvelle liste de séismes.
+     */
     public void setSeismes(ArrayList<Seisme> seismes) {
         this.seismes = seismes;
     }
 
-    // Ici on load le CSV et on l'update
+    /**
+     * Charge un fichier CSV et retourne une liste de séismes.
+     *
+     * @param csvFile      Chemin du fichier CSV contenant les séismes.
+     * @param splitterChar Caractère utilisé comme séparateur dans le fichier CSV.
+     * @return Liste de séismes chargée à partir du fichier CSV.
+     */
     public ArrayList<Seisme> loadCSV(String csvFile,String splitterChar) {
         ArrayList<Seisme> seismeList = new ArrayList<>();
         String line;
@@ -141,9 +179,14 @@ public class ListeDeSeismes {
 
     }
 
-    // L'argument des tris suivants définit si la liste est inversée ou non (croissant/décroissant)
+    // L'argument des tris reverse  définit si la liste est inversée ou non (croissant/décroissant)
 
-    // On tri par intensité décroissante
+    /**
+     * Trie la liste des séismes par intensité dans l'ordre décroissant.
+     *
+     * @param reverse Indique si la liste doit être inversée (tri croissant).
+     * @return Liste des séismes triée par intensité décroissante.
+     */
     public ArrayList<Seisme> triIntensite(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -156,7 +199,11 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // On trie par date, du plus récent au plus ancien
+    /**
+     * Trie la liste des séismes par date, du plus récent au plus ancien.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par date
+     */
     public ArrayList<Seisme> triDate(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -169,7 +216,11 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // On trie par heure, de la plus élevée à la plus faible
+    /**
+     * Trie la liste des séismes par heure, de la plus élevée à la plus faible.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par heure
+     */
     public ArrayList<Seisme> triHeure(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -182,7 +233,12 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // On tri par ordre alphabétique les types de chocs différents
+
+    /**
+     * Trie la liste des séismes par ordre alphabétique des types de chocs différents.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par type de choc
+     */
     public ArrayList<Seisme> triChoc(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -193,7 +249,11 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // On tri par ordre alphabétique les régions
+    /**
+     * Trie la liste des séismes par ordre alphabétique des régions.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par région
+     */
     public ArrayList<Seisme> triRegion(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -204,7 +264,11 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // On tri par ordre alphabétique les zones
+    /**
+     * Trie la liste des séismes par ordre alphabétique des zones.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par zone
+     */
     public ArrayList<Seisme> triZone(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -217,9 +281,12 @@ public class ListeDeSeismes {
 
 
 
-    // TODO : tableau de correspondance a la main selon les valeurs uniques
 
-    // On tri par ordre alphabétique les qualités d'intensité
+    /**
+     * Trie la liste des séismes par ordre alphabétique des qualités d'intensité.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par qualité d'intensité
+     */
     public ArrayList<Seisme> triQualiteIntensite(boolean reverse) {
         ArrayList<Seisme> arbitraire = new ArrayList<Seisme>();
         ArrayList<Seisme> assezSure = new ArrayList<Seisme>();
@@ -252,7 +319,11 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // On trie par latitude
+    /**
+     * Trie la liste des séismes par latitude.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par latitude
+     */
     public ArrayList<Seisme> triLatitude(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -265,7 +336,12 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // On trie par longitude
+
+    /**
+     * Trie la liste des séismes par longitude.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par longitude
+     */
     public ArrayList<Seisme> triLongitude(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -278,7 +354,11 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // On trie par identifiant
+    /**
+     * Trie la liste des séismes par identifiant.
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par identifiant
+     */
     public ArrayList<Seisme> triIdentifiant(boolean reverse) {
         Collections.sort(seismes, new Comparator<Seisme>() {
             public int compare(Seisme c1, Seisme c2) {
@@ -291,7 +371,12 @@ public class ListeDeSeismes {
         return seismes;
     }
 
-    // on tri par proximité d'un seisme
+    /**
+     * Trie la liste des séismes par proximité d'un séisme donné.
+     * @param s le séisme de référence pour le calcul de proximité
+     * @param reverse true si la liste doit être inversée, false sinon
+     * @return la liste des séismes triée par proximité
+     */
     public ArrayList<Seisme> triProximite(Seisme s,boolean reverse){
         // Création d'une copie de la liste originale pour effectuer le tri
         ArrayList<Seisme> sortedList = new ArrayList<>(seismes);
@@ -320,7 +405,12 @@ public class ListeDeSeismes {
 
         return sortedList;
     };
-    //pour calculer la distance entre deux points
+    /**
+     * Calcul de la distance en kilomètres entre deux séismes.
+     * @param seisme1 le premier séisme
+     * @param seisme2 le deuxième séisme
+     * @return la distance en kilomètres entre les deux séismes
+     */
     private double calculerDistance(Seisme seisme1, Seisme seisme2) {
         double lat1 = seisme1.getLatitude();
         double lon1 = seisme1.getLongitude();
@@ -338,6 +428,11 @@ public class ListeDeSeismes {
         return distance;
     }
     // Méthodes pour obtenir les attributs maximum
+    /**
+     * Retourne l'intensité maximale parmi les séismes de la liste.
+     *
+     * @return L'intensité maximale.
+     */
     public double getIntensiteMax() {
         double max = 0;
         for (Seisme i : seismes) {
@@ -345,7 +440,11 @@ public class ListeDeSeismes {
         }
         return max;
     }
-
+    /**
+     * Retourne la longitude maximale parmi les séismes de la liste.
+     *
+     * @return La longitude maximale.
+     */
     public double getLongitudeMax() {
         double max = 0;
         for (Seisme i : seismes) {
@@ -353,7 +452,11 @@ public class ListeDeSeismes {
         }
         return max;
     }
-
+    /**
+     * Retourne la latitude maximale parmi les séismes de la liste.
+     *
+     * @return La latitude maximale.
+     */
     public double getLatitudeMax() {
         double max = 0;
         for (Seisme i : seismes) {
@@ -361,7 +464,11 @@ public class ListeDeSeismes {
         }
         return max;
     }
-
+    /**
+     * Retourne la date maximale parmi les séismes de la liste.
+     *
+     * @return La date maximale.
+     */
     public Date getDateMax() {
         Date max = new Date(0);
         for (Seisme i : seismes) {
@@ -369,7 +476,11 @@ public class ListeDeSeismes {
         }
         return max;
     }
-
+    /**
+     * Retourne l'identifiant maximal parmi les séismes de la liste.
+     *
+     * @return L'identifiant maximal.
+     */
     public double getIdentifiantMax() {
         double max = 0;
         for (Seisme i : seismes) {
@@ -377,7 +488,11 @@ public class ListeDeSeismes {
         }
         return max;
     }
-
+    /**
+     * Retourne l'heure maximale parmi les séismes de la liste.
+     *
+     * @return L'heure maximale.
+     */
     public Time getHeureMax() {
         Time max = new Time(0);
         for (Seisme i : seismes) {
@@ -388,6 +503,11 @@ public class ListeDeSeismes {
 
 
     // Méthodes pour obtenir les attributs minimum
+    /**
+     * Retourne l'intensité minimale parmi les séismes de la liste.
+     *
+     * @return L'intensité minimale.
+     */
     public double getIntensiteMin() {
         double min = 0;
         for (Seisme i : seismes) {
@@ -395,7 +515,11 @@ public class ListeDeSeismes {
         }
         return min;
     }
-
+    /**
+     * Retourne la longitude minimale parmi les séismes de la liste.
+     *
+     * @return La longitude minimale.
+     */
     public double getLongitudemin() {
         double min = 0;
         for (Seisme i : seismes) {
@@ -403,7 +527,11 @@ public class ListeDeSeismes {
         }
         return min;
     }
-
+    /**
+     * Retourne la latitude minimale parmi les séismes de la liste.
+     *
+     * @return La latitude minimale.
+     */
     public double getLatitudeMin() {
         double min = 0;
         for (Seisme i : seismes) {
@@ -411,7 +539,11 @@ public class ListeDeSeismes {
         }
         return min;
     }
-
+    /**
+     * Retourne la date minimale parmi les séismes de la liste.
+     *
+     * @return La date minimale.
+     */
     public Date getDateMin() {
         Date min = getDateMax();
         for (Seisme i : seismes) {
@@ -420,6 +552,11 @@ public class ListeDeSeismes {
         return min;
     }
 
+    /**
+     * Retourne l'identifiant minimal parmi les séismes de la liste.
+     *
+     * @return L'identifiant minimal.
+     */
     public double getIdentifiantMin() {
         double min = 0;
         for (Seisme i : seismes) {
@@ -427,7 +564,11 @@ public class ListeDeSeismes {
         }
         return min;
     }
-
+    /**
+     * Retourne l'heure minimale parmi les séismes de la liste.
+     *
+     * @return L'heure minimale.
+     */
     public Time getHeureMin() {
         Time min = getHeureMax();
         for (Seisme i : seismes) {
@@ -438,6 +579,12 @@ public class ListeDeSeismes {
 
 
     // Méthodes pour obtenir des moyennes d'attributs
+    /**
+     * Calcule la moyenne d'intensité des séismes de la liste.
+     *
+     * @param liste La liste de séismes.
+     * @return La moyenne d'intensité.
+     */
     public double getIntensiteAvg(ListeDeSeismes liste) {
         long total = 0;
         long valnul= 0;
@@ -449,7 +596,12 @@ public class ListeDeSeismes {
         }
         return total / (liste.getSeismes().size()-valnul);
     }
-
+    /**
+     * Calcule la moyenne de longitude des séismes de la liste.
+     *
+     * @param liste La liste de séismes.
+     * @return La moyenne de longitude.
+     */
     public double getLongitudeAvg(ListeDeSeismes liste) {
         long total = 0;
 
@@ -459,7 +611,12 @@ public class ListeDeSeismes {
 
         return total / liste.getSeismes().size();
     }
-
+    /**
+     * Calcule la moyenne de latitude des séismes de la liste.
+     *
+     * @param liste La liste de séismes.
+     * @return La moyenne de latitude.
+     */
     public double getLatitudeAvg(ListeDeSeismes liste) {
         long total = 0;
 
@@ -469,7 +626,12 @@ public class ListeDeSeismes {
 
         return total / liste.getSeismes().size();
     }
-
+    /**
+     * Calcule la moyenne d'heure des séismes de la liste.
+     *
+     * @param dates La liste de séismes.
+     * @return La moyenne d'heure.
+     */
     public Time getHeureAvg(ListeDeSeismes dates) {
         long total = 0;
 
@@ -483,7 +645,12 @@ public class ListeDeSeismes {
     // Méthodes de rehcreche d'attributs
 
 
-
+    /**
+     * Recherche les séismes ayant une intensité donnée.
+     *
+     * @param intensite L'intensité recherchée.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheIntensite(int intensite) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -493,7 +660,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant une longitude donnée.
+     *
+     * @param longitude La longitude recherchée.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheLongitude(int longitude) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -503,7 +675,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant une latitude donnée.
+     *
+     * @param latitude La latitude recherchée.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheLatitude(int latitude) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -513,7 +690,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant une date donnée.
+     *
+     * @param date La date recherchée.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheDate(Date date) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -523,7 +705,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant une qualité d'intensité donnée.
+     *
+     * @param QI La qualité d'intensité recherchée.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheQualiteIntensite(String QI) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -533,7 +720,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant un identifiant donné.
+     *
+     * @param id L'identifiant recherché.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheIdentifiant(int id) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -543,7 +735,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant une heure donnée.
+     *
+     * @param heure L'heure recherchée.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheHeure(Time heure) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -553,7 +750,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant une zone donnée.
+     *
+     * @param zone La zone recherchée.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheZone(String zone) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -563,7 +765,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant une région donnée.
+     *
+     * @param region La région recherchée.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheRegion(String region) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -573,7 +780,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant un type de choc donné.
+     *
+     * @param choc Le type de choc recherché.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheChoc(String choc) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -584,6 +796,12 @@ public class ListeDeSeismes {
         return tabFinal;
     }
 
+    /**
+     * Recherche les séismes ayant une date antérieure à une date donnée.
+     *
+     * @param date La date de référence.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheAvant(Date date) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -593,7 +811,12 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Recherche les séismes ayant une date postérieure à une date donnée.
+     *
+     * @param date La date de référence.
+     * @return Une liste des séismes correspondants.
+     */
     public ArrayList<Seisme> rechercheApres(Date date) {
         ArrayList<Seisme> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {
@@ -603,7 +826,11 @@ public class ListeDeSeismes {
         }
         return tabFinal;
     }
-
+    /**
+     * Retourne une liste des régions présentes dans la liste de séismes.
+     *
+     * @return Une liste des régions présentes.
+     */
     public ArrayList<String> getRegions() {
         ArrayList<String> tabFinal = new ArrayList<>();
         for (Seisme seisme : seismes) {

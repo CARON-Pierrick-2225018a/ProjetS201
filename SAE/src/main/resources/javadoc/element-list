@@ -1,0 +1,5 @@
+module:projetsismique.sae
+seismeApp
+seismeApp.Model
+seismeApp.View
+seismeApp.ViewModel

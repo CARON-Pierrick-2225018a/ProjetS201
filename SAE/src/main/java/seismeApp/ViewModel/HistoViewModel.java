@@ -6,10 +6,19 @@ import seismeApp.Model.Seisme;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+
+/**
+ * Le HistoViewModel est responsable de la manipulation des données nécessaires pour la vue de l'histogramme des séismes.
+ * Il génère les données de l'histogramme à partir de la liste des séismes.
+ */
 public class HistoViewModel {
     private HistoListViewModel listModel;
     private XYChart.Series<String, Number> series = new XYChart.Series<>();
 
+    /**
+     * Constructeur de la classe HistoViewModel.
+     * Initialise les données de l'histogramme à partir de la liste des séismes.
+     */
     public HistoViewModel() {
         listModel = new HistoListViewModel();
 
@@ -34,8 +43,11 @@ public class HistoViewModel {
         }
     }
 
+    /**
+     * Obtient la série de données de l'histogramme.
+     * @return La série de données de l'histogramme.
+     */
     public XYChart.Series<String, Number> getSeries() {
         return series;
     }
-
 }
